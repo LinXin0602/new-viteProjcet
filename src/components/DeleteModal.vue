@@ -1,0 +1,73 @@
+<template lang="">
+  <input type="checkbox" id="deleteModal" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-box">
+      <h3 class="font-bold text-lg">
+        確定要刪除
+        <span v-if="tempProduct?.id" class="text-red-400">{{
+          tempProduct.title
+        }}</span>
+        <span v-else-if="tempCoupon?.id" class="text-red-400">{{
+          tempCoupon.title
+        }}</span>
+        <span v-else-if="tempOrder.id" class="text-2xl"
+          >{{ tempOrder.user?.name }} <span class="text-lg">的訂單</span>
+        </span>
+        ?
+      </h3>
+
+      <div class="modal-action">
+        <label
+          v-if="tempCoupon.id"
+          for="deleteModal"
+          class="btn"
+          @click="dealeteCoupon"
+          >確定</label
+        >
+        <label
+          v-else-if="tempProduct.id"
+          for="deleteModal"
+          class="btn"
+          @click="dealeteItem"
+          >確定</label
+        >
+        <label
+          v-else-if="tempOrder.id"
+          for="deleteModal"
+          class="btn"
+          @click="deleteOrder"
+          >確定</label
+        >
+        <label
+          for="deleteModal"
+          @click="
+            (tempProduct = {}),
+              (tempCoupon = { is_enabled: 1 }),
+              (tempOrder = {})
+          "
+          class="btn"
+          >取消!</label
+        >
+      </div>
+    </div>
+  </div>
+</template>
+<script setup>
+import { storeToRefs } from 'pinia';
+//產品頁面
+import { useProductsStroes } from '@/stores/ProductsStores.js';
+const productsStroe = useProductsStroes();
+const { tempProduct } = storeToRefs(productsStroe);
+const { dealeteItem } = productsStroe;
+//優惠券頁面
+import { useCouponStores } from '@/stores/CouponStores';
+const couponStroe = useCouponStores();
+const { tempCoupon } = storeToRefs(couponStroe);
+const { dealeteCoupon } = couponStroe;
+//訂單頁面
+import { useOrderStores } from '@/stores/OrderStores';
+const orderStores = useOrderStores();
+const { tempOrder } = storeToRefs(orderStores);
+const { deleteOrder } = orderStores;
+</script>
+<style lang=""></style>
