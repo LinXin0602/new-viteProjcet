@@ -2,18 +2,17 @@
   <input type="checkbox" id="articleModal" class="modal-toggle" />
   <div class="modal">
     <div class="modal-box w-11/12 max-w-5xl">
-      <header
-        class="h-16 bg-gray-200 flex justify-center text-3xl items-center"
+      <div
+        class="h-14 bg-gray-200 text-slate-500 flex justify-center text-2xl items-center"
       >
-        新增文章
-      </header>
-      <div class="divider"></div>
+        <h3 v-if="isAdd">新增文章</h3>
+        <h3 v-else>編輯文章</h3>
+      </div>
+      <div class="divider my-3"></div>
       <div class="form-control flex">
-        <label class="text-2xl flex justify-between" for="title"
+        <label class="text-2xl flex justify-between items-center" for="title"
           ><span>標題</span>
-          <span class="text-end text-sm">{{
-            date(tempArticle.create_at)
-          }}</span>
+          <span class="text-sm">{{ date(tempArticle.create_at) }}</span>
         </label>
       </div>
       <div>
@@ -87,8 +86,27 @@
       </div>
 
       <div class="modal-action">
-        <label for="articleModal" @click="addArticle" class="btn">確定</label>
-        <label for="articleModal" @click="tempArticle = {}" class="btn"
+        <label
+          for="articleModal"
+          @click="
+            addArticle(tempArticle),
+              (tempArticle = {
+                create_at: Math.floor(Date.now() / 1000),
+                isPublic: true,
+              })
+          "
+          class="btn"
+          >確定</label
+        >
+        <label
+          for="articleModal"
+          @click="
+            tempArticle = {
+              create_at: Math.floor(Date.now() / 1000),
+              isPublic: true,
+            }
+          "
+          class="btn"
           >取消</label
         >
       </div>
@@ -103,7 +121,7 @@ import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useArticleStores } from '../stores/ArticleStores.js';
 const ArticleStores = useArticleStores();
-const { tempArticle } = storeToRefs(ArticleStores);
+const { tempArticle, isAdd } = storeToRefs(ArticleStores);
 const { addArticle } = ArticleStores;
 const fileInput = ref(null);
 //上傳圖片並轉API為網址

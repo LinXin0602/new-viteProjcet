@@ -43,8 +43,10 @@
               checked
             />
             <label class="align-top mx-1" :for="`paidSwitch${item.id}`">
-              <span v-if="item.is_paid">已付款</span>
-              <span v-else>未付款</span>
+              <span v-if="item.is_paid" class="text-success font-semibold"
+                >已付款</span
+              >
+              <span v-else class="text-red-400 font-semibold">未付款</span>
             </label>
           </td>
 

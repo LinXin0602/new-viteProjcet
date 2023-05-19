@@ -3,11 +3,11 @@
     <input type="checkbox" id="CouponModal" class="modal-toggle" />
     <div class="modal">
       <div class="modal-box w-11/12 max-w-5xl">
-        <div class="bg-gray-200">
-          <h1 v-if="isAdd" class="text-center text-2xl text-slate-400">
-            新增優惠券
-          </h1>
-          <h1 v-else class="text-center text-2xl text-slate-400">編輯優惠券</h1>
+        <div
+          class="h-14 bg-gray-200 text-slate-500 flex justify-center text-2xl items-center"
+        >
+          <h3 v-if="isAdd">新增優惠券</h3>
+          <h3 v-else>編輯優惠券</h3>
         </div>
         <div class="divider"></div>
         <div class="flex flex-row">

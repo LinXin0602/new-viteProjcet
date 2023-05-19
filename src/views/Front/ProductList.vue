@@ -13,7 +13,7 @@
           @click="goProduct(item.id)"
           v-for="item in products"
           :key="item.id"
-          class="group hover:scale-105 transition transit cursor-pointer"
+          class="group hover:scale-105 transition transit cursor-pointer hover:shadow-md"
         >
           <div
             class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
@@ -24,9 +24,9 @@
               class="h-full w-full object-cover object-center group-hover:opacity-75 cursor-pointer"
             />
           </div>
-          <h3 class="mt-4 text-2xl text-gray-700">{{ item.title }}</h3>
-          <p class="mt-1 text-lg font-medium text-gray-900">
-            售價 : {{ item.price }}
+          <h3 class="mt-4 mx-2 text-2xl text-gray-700">{{ item.title }}</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900 mx-2">
+            售價 : NT${{ item.price }}
           </p>
           <button @click="goProduct(item.id)" class="btn w-full my-3">
             查看更多

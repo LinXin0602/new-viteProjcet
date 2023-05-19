@@ -2,19 +2,38 @@
   <loading-overlay :active="isLoading"></loading-overlay>
   <div
     ref="navbarRef"
-    class="w-full fixed top-0 z-50 h-16 navbar bg-gray-200 rounded-b-xl shadow-xl"
+    class="w-full fixed top-0 z-50 h-16 navbar bg-gray-300 rounded-b-xl shadow-lg"
   >
     <div class="flex-1 mx-5">
       <router-link :to="{ name: 'userboard' }">
         <img class="h-12" src="../assets/thisballLogo_preview_rev_1.png" alt=""
       /></router-link>
     </div>
-    <div class="flex-none">
-      <router-link
-        :to="{ name: 'productlist' }"
-        class="btn btn-ghost hover:underline underline-offset-4 decoration-gray-400 transition decoration-2"
-        >那些食物</router-link
-      >
+    <div>
+      <ul class="flex">
+        <li>
+          <router-link
+            :to="{ name: 'productlist' }"
+            class="underline-transition mx-5 font-mono font-bold hover:text-lg duration-300 ease-in"
+            >我們的那些</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            :to="{ name: 'productlist' }"
+            class="underline-transition mx-5 font-mono font-bold hover:text-lg duration-300 ease-in"
+            >那些食物</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            :to="{ name: 'productlist' }"
+            class="underline-transition mx-5 font-mono font-bold hover:text-lg duration-300 ease-in"
+            >那些食物</router-link
+          >
+        </li>
+      </ul>
+
       <div class="dropdown dropdown-end">
         <label
           tabindex="0"
@@ -167,7 +186,8 @@ input[type='number']::-webkit-inner-spin-button {
 }
 .scroll-down {
   transition: all 0.5s ease-in;
-  background-color: rgba(243, 244, 246, 0.7);
+  background-color: rgb(243, 244, 246);
+  opacity: 0.9;
   position: fixed;
   top: 0;
   z-index: 90;
@@ -175,5 +195,29 @@ input[type='number']::-webkit-inner-spin-button {
 }
 .scroll-down-removed {
   transition: all 0.3s ease-in;
+}
+.underline-transition {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-transition::after {
+  font-size: 20px;
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  border-bottom-right-radius: 10px;
+  border-bottom: 4px solid #a4a2a2;
+  border-radius: 4px;
+  /* background-color: #000; */
+  transition: width 0.3s ease-in, left 0.3s ease-in;
+}
+
+.underline-transition:hover::after {
+  width: 100%;
+  left: 0;
 }
 </style>
