@@ -1,9 +1,9 @@
 import { useToast } from 'vue-toastification';
 const toast = useToast();
-export function toastMessage(res, title) {
+export function toastMessage(res, title, msg) {
   if (res.data.success) {
     if (title) {
-      toast.success(`${title}完成`);
+      toast.success(`${title}${msg}`);
     }
     return;
   } else {

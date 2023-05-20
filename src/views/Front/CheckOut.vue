@@ -90,7 +90,7 @@
           折價券
           <input
             v-model="couponCode"
-            class="text-center input input-bordered md:input-sm input-sm text-lg"
+            class="text-center input input-bordered md:input-sm input-sm text-sm md:text-lg"
             placeholder="請輸入優惠碼"
             type="text"
           />

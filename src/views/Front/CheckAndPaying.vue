@@ -48,10 +48,12 @@
           <tr>
             <th>訂單編號</th>
             <td>
-              <div class="flex justify-between">
+              <div class="flex justify-between text-xs md:text-lg">
                 <p>{{ singleOrder.id }}</p>
                 <button @click="copyOrderid">
-                  <i class="hover:text-gray-400 text-gray-600 fa fa-copy fa-lg">
+                  <i
+                    class="ml-3 hover:text-gray-400 text-gray-600 fa fa-copy fa-lg"
+                  >
                   </i>
                 </button>
               </div>
@@ -105,12 +107,15 @@ import { date } from '../../composables/useDateChange';
 import { storeToRefs } from 'pinia';
 import { useUserProductsStores } from '../../stores/UserProductsStores';
 import { useRoute } from 'vue-router';
+import { useToast } from 'vue-toastification';
+const toast = useToast();
 const route = useRoute();
 const orderId = route.params.id;
 const userProductsStroes = useUserProductsStores();
 const { singleOrder } = storeToRefs(userProductsStroes);
 const { getOrder, paying } = userProductsStroes;
 const copyOrderid = () => {
+  toast.info(`已複製訂單 ${singleOrder.value.id} `);
   navigator.clipboard.writeText(singleOrder.value.id);
 };
 getOrder(orderId);

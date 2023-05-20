@@ -10,29 +10,92 @@
       /></router-link>
     </div>
     <div>
-      <ul class="flex">
+      <ul class="hidden md:flex">
         <li>
           <router-link
             :to="{ name: 'productlist' }"
-            class="underline-transition mx-5 font-mono font-bold hover:text-lg duration-300 ease-in"
-            >我們的那些</router-link
-          >
+            class="underline-transition mx-5 font-mono font-bold hover:scale-105 duration-300"
+            ><div>我們的那些</div>
+          </router-link>
         </li>
         <li>
           <router-link
             :to="{ name: 'productlist' }"
-            class="underline-transition mx-5 font-mono font-bold hover:text-lg duration-300 ease-in"
+            class="underline-transition mx-5 font-mono font-bold hover:scale-105 duration-300"
             >那些食物</router-link
           >
         </li>
         <li>
           <router-link
             :to="{ name: 'productlist' }"
-            class="underline-transition mx-5 font-mono font-bold hover:text-lg duration-300 ease-in"
+            class="underline-transition mx-5 font-mono font-bold hover:scale-105 duration-300"
             >那些食物</router-link
           >
         </li>
       </ul>
+      <!-- 小視窗漢堡 -->
+      <div class="md:hidden">
+        <transition name="slide-down">
+          <div
+            v-if="showDropdown"
+            class="h-40 fixed w-2/5 sm:w-2/6 right-10 top-16 bg-gray-200 rounded-b-xl duration-200"
+          >
+            <ul class="flex h-full flex-col justify-around text-lg">
+              <li class="">
+                <router-link
+                  :to="{ name: 'productlist' }"
+                  class="underline-transition mx-5 font-mono font-bold hover:scale-105 duration-300"
+                  ><div>我們的那些</div>
+                </router-link>
+              </li>
+              <li>
+                <router-link
+                  :to="{ name: 'productlist' }"
+                  class="underline-transition mx-5 font-mono font-bold hover:scale-105 duration-300"
+                  >那些食物</router-link
+                >
+              </li>
+              <li>
+                <router-link
+                  :to="{ name: 'productlist' }"
+                  class="underline-transition mx-5 font-mono font-bold hover:scale-105 duration-300"
+                  >那些食物</router-link
+                >
+              </li>
+            </ul>
+          </div>
+        </transition>
+        <div>
+          <label
+            @click="toggleDropdown"
+            class="btn btn-circle bg-transparent border-transparent"
+          >
+            <!-- hamburger icon -->
+            <svg
+              v-if="showDropdown"
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 512 512"
+            >
+              <polygon
+                points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"
+              />
+            </svg>
+            <svg
+              v-else
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 512 512"
+            >
+              <path
+                d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"
+              />
+            </svg>
+          </label>
+        </div>
+      </div>
 
       <div class="dropdown dropdown-end">
         <label
@@ -165,6 +228,11 @@ const { shopingCart, isLoading } = storeToRefs(userProductsStroes);
 const { getShopingCart, deleteCart, checkQty } = userProductsStroes;
 getShopingCart();
 const navbarRef = ref(null);
+const showDropdown = ref(false);
+const toggleDropdown = () => {
+  showDropdown.value = !showDropdown.value;
+};
+
 onMounted(() => {
   const navbar = navbarRef.value;
   window.addEventListener('scroll', () => {
@@ -185,6 +253,8 @@ input[type='number']::-webkit-inner-spin-button {
   margin: 0;
 }
 .scroll-down {
+  transform-origin: top;
+  transform: scaleY(0.95);
   transition: all 0.5s ease-in;
   background-color: rgb(243, 244, 246);
   opacity: 0.9;
@@ -219,5 +289,16 @@ input[type='number']::-webkit-inner-spin-button {
 .underline-transition:hover::after {
   width: 100%;
   left: 0;
+}
+
+.slide-down-enter-active,
+.slide-down-leave-active {
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+.slide-down-enter-from,
+.slide-down-leave-to {
+  opacity: 0;
 }
 </style>

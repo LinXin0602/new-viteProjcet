@@ -7,7 +7,7 @@ export const useOrderStores = defineStore('OrderStores', () => {
   const tempOrder = ref({});
   const pagination = ref({});
   const isLoading = ref(false);
-
+  //獲取訂單列表
   const getOrder = (page = 1) => {
     isLoading.value = true;
     const api = `${import.meta.env.VITE_API}api/${
@@ -18,7 +18,6 @@ export const useOrderStores = defineStore('OrderStores', () => {
       isLoading.value = false;
       orders.value = res.data.orders;
       pagination.value = res.data.pagination;
-      console.log();
     });
   };
   //刪除訂單

@@ -33,13 +33,13 @@ export const useProductsStroes = defineStore('productsStroes', () => {
         import.meta.env.VITE_PATH
       }/admin/product/${tempProduct.value.id}`;
       axios.put(api, { data: tempProduct.value }).then((res) => {
-        toastMessage(res, `產品更新`);
+        toastMessage(res, `產品${res.data.title}更新成功`, '');
         tempProduct.value = {};
         getProduct();
       });
     } else {
       axios.post(api, { data: tempProduct.value }).then((res) => {
-        toastMessage(res, '產品新增');
+        toastMessage(res, '產品新增成功', '');
         tempProduct.value = {};
         getProduct();
       });

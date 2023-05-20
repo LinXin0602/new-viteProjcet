@@ -18,6 +18,7 @@ export const useArticleStores = defineStore('ArticleStores', () => {
   const articleList = ref({});
   const isAdd = ref(false); //新增OR編輯
 
+  //新增或編輯文章
   const addArticle = (item) => {
     console.log(item.id);
     if (item.id) {
@@ -38,7 +39,7 @@ export const useArticleStores = defineStore('ArticleStores', () => {
       });
     }
   };
-
+  //獲取文章列表
   const getArticleList = (page = 1) => {
     const api = `${import.meta.env.VITE_API}api/${
       import.meta.env.VITE_PATH
@@ -47,6 +48,7 @@ export const useArticleStores = defineStore('ArticleStores', () => {
       articleList.value = res.data.articles;
     });
   };
+  //獲取單筆文章
   const getArticle = (id) => {
     const api = `${import.meta.env.VITE_API}api/${
       import.meta.env.VITE_PATH
@@ -56,12 +58,13 @@ export const useArticleStores = defineStore('ArticleStores', () => {
       console.log(res);
     });
   };
+  //刪除文章
   const deleteArticle = () => {
     const api = `${import.meta.env.VITE_API}api/${
       import.meta.env.VITE_PATH
     }/admin/article/${tempArticle.value.id}`;
     axios.delete(api).then((res) => {
-      toastMessage(res, `文章【${tempArticle.value.title}】刪除`);
+      toastMessage(res, `文章【${tempArticle.value.title}】刪除成功`, '');
       console.log(res);
       getArticleList();
     });

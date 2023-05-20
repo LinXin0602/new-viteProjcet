@@ -13,7 +13,7 @@
           @click="goProduct(item.id)"
           v-for="item in products"
           :key="item.id"
-          class="group hover:scale-105 transition transit cursor-pointer hover:shadow-md"
+          class="group hover:scale-105 duration-200 cursor-pointer hover:shadow-md"
         >
           <div
             class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
