@@ -12,7 +12,7 @@
       <div class="form-control flex">
         <label class="text-2xl flex justify-between items-center" for="title"
           ><span>標題</span>
-          <span class="text-sm">{{ date(tempArticle.create_at) }}</span>
+          <span class="text-sm">{{ DayDate(tempArticle.create_at) }}</span>
         </label>
       </div>
       <div>
@@ -79,8 +79,14 @@
           <textarea
             v-model="tempArticle.content"
             id="content"
-            class="textarea textarea-bordered mt-2 w-full h-full"
+            class="textarea textarea-bordered mt-2 w-full h-1/2"
             placeholder="請輸入文章內容"
+          ></textarea>
+          <textarea
+            v-model="tempArticle.description"
+            id="content"
+            class="textarea textarea-bordered my-2 w-full h-1/2"
+            placeholder="請輸入文章概述"
           ></textarea>
         </div>
       </div>
@@ -116,10 +122,11 @@
 
 <script setup>
 import axios from 'axios';
-import { date } from '../composables/useDateChange';
+import { changeDate } from '../composables/useDateChange';
 import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useArticleStores } from '../stores/ArticleStores.js';
+const { DayDate } = changeDate();
 const ArticleStores = useArticleStores();
 const { tempArticle, isAdd } = storeToRefs(ArticleStores);
 const { addArticle } = ArticleStores;

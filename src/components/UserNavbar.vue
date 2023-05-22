@@ -20,9 +20,9 @@
         </li>
         <li>
           <router-link
-            :to="{ name: 'productlist' }"
+            :to="{ name: 'articlelistview' }"
             class="underline-transition mx-5 font-mono font-bold hover:scale-105 duration-300"
-            >那些食物</router-link
+            >關於那些事</router-link
           >
         </li>
         <li>
@@ -50,9 +50,9 @@
               </li>
               <li>
                 <router-link
-                  :to="{ name: 'productlist' }"
+                  :to="{ name: 'articlelistview' }"
                   class="underline-transition mx-5 font-mono font-bold hover:scale-105 duration-300"
-                  >那些食物</router-link
+                  >關於那些事</router-link
                 >
               </li>
               <li>
@@ -198,7 +198,7 @@
             </div>
             <div class="divider"></div>
             <h3 class="text-end align-top text-xl">
-              總計:{{ shopingCart.total }}
+              NT : {{ shopingCart.total }}
             </h3>
             <div class="card-actions">
               <router-link
@@ -218,6 +218,30 @@
       </div>
     </div>
   </div>
+  <transition name="toTop">
+    <div
+      @click="toTop"
+      ref="toTopRef"
+      class="h-16 w-16 bg-gray-100 fixed bottom-28 right-0 scale-0 opacity-0 cursor-pointer"
+    >
+      <svg
+        class="h-10 w-10 text-gray-400 absolute right-3 top-2"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" />
+        <line x1="12" y1="4" x2="12" y2="14" />
+        <line x1="12" y1="4" x2="16" y2="8" />
+        <line x1="12" y1="4" x2="8" y2="8" />
+        <line x1="4" y1="20" x2="20" y2="20" />
+      </svg></div
+  ></transition>
 </template>
 <script setup>
 import { onMounted, ref } from 'vue';
@@ -227,12 +251,33 @@ const userProductsStroes = useUserProductsStores();
 const { shopingCart, isLoading } = storeToRefs(userProductsStroes);
 const { getShopingCart, deleteCart, checkQty } = userProductsStroes;
 getShopingCart();
-const navbarRef = ref(null);
+
+const toTopRef = ref(null);
+onMounted(() => {
+  const toTop = toTopRef.value;
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 10) {
+      toTop.classList.add('toTop-transition');
+    } else {
+      toTop.classList.remove('toTop-transition');
+      toTop.classList.add('toTop-removed');
+    }
+  });
+});
+const toTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
+//漢堡點擊效果
 const showDropdown = ref(false);
 const toggleDropdown = () => {
   showDropdown.value = !showDropdown.value;
 };
 
+//navbar效果
+const navbarRef = ref(null);
 onMounted(() => {
   const navbar = navbarRef.value;
   window.addEventListener('scroll', () => {
@@ -254,17 +299,17 @@ input[type='number']::-webkit-inner-spin-button {
 }
 .scroll-down {
   transform-origin: top;
-  transform: scaleY(0.95);
-  transition: all 0.5s ease-in;
+  height: 3.5rem;
+  transition: all 0.4s ease-in-out;
   background-color: rgb(243, 244, 246);
   opacity: 0.9;
   position: fixed;
   top: 0;
   z-index: 90;
-  /* transform: scale(0.95); */
+  transform: scaleY(0.98);
 }
 .scroll-down-removed {
-  transition: all 0.3s ease-in;
+  transition: all 0.4s ease-in-out;
 }
 .underline-transition {
   position: relative;
@@ -282,8 +327,7 @@ input[type='number']::-webkit-inner-spin-button {
   border-bottom-right-radius: 10px;
   border-bottom: 4px solid #a4a2a2;
   border-radius: 4px;
-  /* background-color: #000; */
-  transition: width 0.3s ease-in, left 0.3s ease-in;
+  transition: width 0.25s ease-in, left 0.25s ease-in;
 }
 
 .underline-transition:hover::after {
@@ -300,5 +344,15 @@ input[type='number']::-webkit-inner-spin-button {
 .slide-down-enter-from,
 .slide-down-leave-to {
   opacity: 0;
+}
+.toTop-transition {
+  transition: all 0.4s ease-in-out;
+  transform: translateX(-1rem);
+  opacity: 1;
+  border: 1px solid transparent;
+  border-radius: 50%;
+}
+.toTop-removed {
+  transition: all 0.4s ease-in-out;
 }
 </style>

@@ -1,17 +1,48 @@
 <template>
   <loading-overlay :active="isLoading"></loading-overlay>
   <div class="bg-white">
-    <div
-      class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8"
-    >
-      <h2 class="sr-only">Products</h2>
-
+    <div class="tabs flex justify-center h-24">
+      <ul>
+        <li
+          :class="{ 'tab-bordered tab-active': productStyle === '' }"
+          class="px-5 tab hover:tab-bordered"
+          @click="(productStyle = ''), getProducts()"
+        >
+          全部商品
+        </li>
+        <li
+          :class="{ 'tab-bordered tab-active': productStyle === '咖啡' }"
+          class="px-5 tab hover:tab-bordered"
+          @click="(productStyle = '咖啡'), getProducts()"
+        >
+          咖啡
+        </li>
+        <li
+          :class="{ 'tab-bordered tab-active': productStyle === '飲品' }"
+          class="px-5 tab hover:tab-bordered"
+          @click="(productStyle = '飲品'), getProducts()"
+        >
+          飲品
+        </li>
+        <li
+          :class="{
+            'tab-bordered tab-active': productStyle === '招牌純牛乳鬆餅球',
+          }"
+          class="px-5 tab hover:tab-bordered"
+          @click="(productStyle = '招牌純牛乳鬆餅球'), getProducts()"
+        >
+          鬆餅球
+        </li>
+      </ul>
+    </div>
+    <div class="divider my-1"></div>
+    <div class="mx-auto max-w-2xl px-4 sm:px-6 py-6 lg:max-w-7xl lg:px-8">
       <div
         class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8"
       >
         <a
           @click="goProduct(item.id)"
-          v-for="item in products"
+          v-for="item in filteredProducts"
           :key="item.id"
           class="group hover:scale-105 duration-200 cursor-pointer hover:shadow-md"
         >
@@ -52,7 +83,7 @@ import { storeToRefs } from 'pinia';
 import { useUserProductsStores } from '../../stores/UserProductsStores.js';
 const userProductsStroes = useUserProductsStores();
 const { getProducts, addShopingCart, getShopingCart } = userProductsStroes;
-const { products, status, isLoading, product } =
+const { status, isLoading, product, filteredProducts, productStyle } =
   storeToRefs(userProductsStroes);
 import { useRouter } from 'vue-router';
 const router = useRouter();

@@ -16,7 +16,7 @@
       </thead>
       <tbody>
         <tr v-for="item in articleList" :key="item.id">
-          <td>{{ date(item.create_at) }}</td>
+          <td>{{ TimeDate(item.create_at) }}</td>
           <td class="truncate max-w-xs">{{ item.title }}</td>
           <td>
             <img class="w-28" :src="item.image" alt="" />
@@ -50,11 +50,12 @@
   <DeleteModal />
 </template>
 <script setup>
-import { date } from '../../composables/useDateChange';
+import { changeDate } from '../../composables/useDateChange';
 import { storeToRefs } from 'pinia';
 import ArticleModal from '../../components/ArticleModal.vue';
 import { useArticleStores } from '../../stores/ArticleStores';
 import DeleteModal from '../../components/DeleteModal.vue';
+const { TimeDate } = changeDate();
 const articleStores = useArticleStores();
 const { articleList, isAdd } = storeToRefs(articleStores);
 const { getArticleList, getItem } = articleStores;

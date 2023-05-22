@@ -11,11 +11,15 @@ export const useArticleStores = defineStore('ArticleStores', () => {
     content: '',
     image: '',
   });
+  //管理者單筆文章
   const tempArticle = ref({
     create_at: Math.floor(Date.now() / 1000),
     isPublic: true,
   });
-  const articleList = ref({});
+  //user端單筆文章
+  const userTempArticle = ref({});
+  const articleList = ref({}); //管理者文章列表
+  const UserArticleList = ref({}); //user端文章列表
   const isAdd = ref(false); //新增OR編輯
 
   //新增或編輯文章
@@ -45,7 +49,18 @@ export const useArticleStores = defineStore('ArticleStores', () => {
       import.meta.env.VITE_PATH
     }/admin/articles?page=${page}`;
     axios.get(api).then((res) => {
+      console.log(res);
       articleList.value = res.data.articles;
+    });
+  };
+  //取得User端文章列表
+  const getUserArticleList = (page = 1) => {
+    const api = `${import.meta.env.VITE_API}api/${
+      import.meta.env.VITE_PATH
+    }/articles?page=${page}`;
+    axios.get(api).then((res) => {
+      console.log(res);
+      UserArticleList.value = res.data.articles;
     });
   };
   //獲取單筆文章
@@ -55,6 +70,16 @@ export const useArticleStores = defineStore('ArticleStores', () => {
     }/admin/article/${id}`;
     axios.get(api).then((res) => {
       tempArticle.value.content = res.data.article.content;
+      console.log(res);
+    });
+  };
+  //獲取Uesr端單筆文章
+  const getUserArticle = (id) => {
+    const api = `${import.meta.env.VITE_API}api/${
+      import.meta.env.VITE_PATH
+    }/article/${id}`;
+    axios.get(api).then((res) => {
+      userTempArticle.value = res.data.article;
       console.log(res);
     });
   };
@@ -83,5 +108,9 @@ export const useArticleStores = defineStore('ArticleStores', () => {
     isAdd,
     getArticle,
     deleteArticle,
+    getUserArticleList,
+    UserArticleList,
+    getUserArticle,
+    userTempArticle,
   };
 });

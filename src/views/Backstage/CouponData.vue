@@ -29,7 +29,7 @@
           <th>{{ item.title }}</th>
           <td>{{ item.code }}</td>
           <td>{{ item.percent }}</td>
-          <td>{{ date(item.due_date) }}</td>
+          <td>{{ DayDate(item.due_date) }}</td>
           <td>
             <span v-if="item.is_enabled" class="text-success">啟用</span>
             <span v-else class="text-red-500"> 未啟用</span>
@@ -61,10 +61,10 @@
 <script setup>
 import DeleteModal from '@/components/DeleteModal.vue';
 import CouponModal from '@/components/CouponModal.vue';
-import { date } from '@/composables/useDateChange.js';
+import { changeDate } from '@/composables/useDateChange.js';
 import { storeToRefs } from 'pinia';
 import { useCouponStores } from '@/stores/CouponStores.js';
-
+const { DayDate } = changeDate();
 const couponStores = useCouponStores();
 const { getCoupons, getItem } = couponStores;
 const { coupons, isAdd, isLoading } = storeToRefs(couponStores);

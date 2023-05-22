@@ -1,6 +1,9 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import Toast from 'vue-toastification';
 // Import the CSS or use your own!
 import 'vue-toastification/dist/index.css';
@@ -56,5 +59,7 @@ app.component('Field', Field);
 app.component('ErrorMessage', ErrorMessage);
 app.use(router);
 app.use(Toast, { timeout: 2500 });
+AOS.init();
 app.component('loading-overlay', Loading);
+
 app.mount('#app');

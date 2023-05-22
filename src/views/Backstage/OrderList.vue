@@ -21,7 +21,7 @@
       </thead>
       <tbody>
         <tr v-for="item in orders" :key="item.id">
-          <td>{{ date(item.create_at) }}</td>
+          <td>{{ TimeDate(item.create_at) }}</td>
           <td>{{ item.user.name }}</td>
           <td>{{ item.user.email }}</td>
           <td>
@@ -74,11 +74,12 @@
   <DeleteModal />
 </template>
 <script setup>
-import { date } from '@/composables/useDateChange.js';
+import { changeDate } from '@/composables/useDateChange.js';
 import OrderModal from '@/components/OrderModal.vue';
 import DeleteModal from '../../components/DeleteModal.vue';
 import { useOrderStores } from '@/stores/OrderStores.js';
 import { storeToRefs } from 'pinia';
+const { TimeDate } = changeDate();
 const orderStores = useOrderStores();
 const { getOrder, getItem } = orderStores;
 const { orders, isLoading } = storeToRefs(orderStores);

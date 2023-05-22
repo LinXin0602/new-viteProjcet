@@ -35,7 +35,7 @@
               </tr>
               <tr>
                 <th>下單時間</th>
-                <td>{{ date(tempOrder?.create_at) }}</td>
+                <td>{{ TimeDate(tempOrder?.create_at) }}</td>
               </tr>
 
               <tr>
@@ -50,7 +50,7 @@
               <tr v-if="tempOrder.paid_date">
                 <th>付款時間</th>
                 <td>
-                  <span> {{ date(tempOrder?.paid_date) }}</span>
+                  <span> {{ TimeDate(tempOrder?.paid_date) }}</span>
                 </td>
               </tr>
               <tr>
@@ -79,9 +79,10 @@
   </div>
 </template>
 <script setup>
-import { date } from '../composables/useDateChange';
+import { changeDate } from '../composables/useDateChange';
 import { storeToRefs } from 'pinia';
 import { useOrderStores } from '@/stores/OrderStores';
+const { TimeDate } = changeDate();
 const orderStores = useOrderStores();
 const { tempOrder } = storeToRefs(orderStores);
 </script>

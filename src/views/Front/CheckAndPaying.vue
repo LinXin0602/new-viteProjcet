@@ -61,7 +61,7 @@
           </tr>
           <tr>
             <th>訂單成立時間</th>
-            <td>{{ date(singleOrder.create_at) }}</td>
+            <td>{{ TimeDate(singleOrder.create_at) }}</td>
           </tr>
           <tr>
             <th>付款方式</th>
@@ -103,7 +103,7 @@
 </template>
 
 <script setup>
-import { date } from '../../composables/useDateChange';
+import { changeDate } from '../../composables/useDateChange';
 import { storeToRefs } from 'pinia';
 import { useUserProductsStores } from '../../stores/UserProductsStores';
 import { useRoute } from 'vue-router';
@@ -114,6 +114,7 @@ const orderId = route.params.id;
 const userProductsStroes = useUserProductsStores();
 const { singleOrder } = storeToRefs(userProductsStroes);
 const { getOrder, paying } = userProductsStroes;
+const { TimeDate } = changeDate();
 const copyOrderid = () => {
   toast.info(`已複製訂單 ${singleOrder.value.id} `);
   navigator.clipboard.writeText(singleOrder.value.id);

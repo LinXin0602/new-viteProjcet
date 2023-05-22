@@ -20,6 +20,7 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
     paying: '',
   });
   const singleOrder = ref({});
+
   //取得單一商品
   const product = ref({});
   const getProduct = (id) => {
@@ -29,11 +30,12 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
     }/product/${id}`;
     axios.get(api).then((res) => {
       isLoading.value = false;
-      console.log(res);
       product.value = res.data.product;
     });
   };
   //取得商品列表
+  const productStyle = ref('');
+  const filteredProducts = ref([]);
   const products = ref({});
   const getProducts = () => {
     isLoading.value = true;
@@ -42,7 +44,16 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
     }/products/all`;
     axios.get(api).then((res) => {
       isLoading.value = false;
+      console.log(res);
       products.value = res.data.products;
+      filteredProducts.value = [];
+      products.value.forEach((item) => {
+        if (item.category === productStyle.value) {
+          filteredProducts.value.push(item);
+        } else if (productStyle.value === '') {
+          filteredProducts.value.push(item);
+        }
+      });
     });
   };
   //加入購物車
@@ -65,7 +76,6 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
     }/cart`;
     axios.get(api).then((res) => {
       shopingCart.value = res.data.data;
-      console.log(shopingCart.value);
     });
   };
   //刪除購物車內容
@@ -142,7 +152,6 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
       import.meta.env.VITE_PATH
     }/order/${id}`;
     axios.get(api).then((res) => {
-      console.log(res);
       singleOrder.value = res.data.order;
     });
   };
@@ -153,7 +162,6 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
       import.meta.env.VITE_PATH
     }/pay/${id}`;
     axios.post(api).then((res) => {
-      console.log(res);
       if (res.data.success) {
         router.push({ name: 'checkoutfinish' });
       }
@@ -178,5 +186,7 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
     getOrder,
     singleOrder,
     paying,
+    filteredProducts,
+    productStyle,
   };
 });
