@@ -1,6 +1,6 @@
 <template lang="">
   <div class="h-48 font-semibold flex justify-center items-center text-3xl">
-    <h2>關於我們的那些事</h2>
+    <h2>關於那些事</h2>
   </div>
   <div class="divider my-2 mb-14"></div>
   <div

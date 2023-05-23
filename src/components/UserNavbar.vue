@@ -13,7 +13,7 @@
       <ul class="hidden md:flex">
         <li>
           <router-link
-            :to="{ name: 'productlist' }"
+            :to="{ name: 'aboutview' }"
             class="underline-transition mx-5 font-mono font-bold hover:scale-105 duration-300"
             ><div>我們的那些</div>
           </router-link>
@@ -43,7 +43,7 @@
             <ul class="flex h-full flex-col justify-around text-lg">
               <li class="">
                 <router-link
-                  :to="{ name: 'productlist' }"
+                  :to="{ name: 'aboutview' }"
                   class="underline-transition mx-5 font-mono font-bold hover:scale-105 duration-300"
                   ><div>我們的那些</div>
                 </router-link>
@@ -198,7 +198,7 @@
             </div>
             <div class="divider"></div>
             <h3 class="text-end align-top text-xl">
-              NT : {{ shopingCart.total }}
+              NT${{ shopingCart.total }}
             </h3>
             <div class="card-actions">
               <router-link

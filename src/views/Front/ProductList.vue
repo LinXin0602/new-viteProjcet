@@ -11,6 +11,15 @@
           全部商品
         </li>
         <li
+          :class="{
+            'tab-bordered tab-active': productStyle === '招牌純牛乳鬆餅球',
+          }"
+          class="px-5 tab hover:tab-bordered"
+          @click="(productStyle = '招牌純牛乳鬆餅球'), getProducts()"
+        >
+          鬆餅球
+        </li>
+        <li
           :class="{ 'tab-bordered tab-active': productStyle === '咖啡' }"
           class="px-5 tab hover:tab-bordered"
           @click="(productStyle = '咖啡'), getProducts()"
@@ -23,15 +32,6 @@
           @click="(productStyle = '飲品'), getProducts()"
         >
           飲品
-        </li>
-        <li
-          :class="{
-            'tab-bordered tab-active': productStyle === '招牌純牛乳鬆餅球',
-          }"
-          class="px-5 tab hover:tab-bordered"
-          @click="(productStyle = '招牌純牛乳鬆餅球'), getProducts()"
-        >
-          鬆餅球
         </li>
       </ul>
     </div>

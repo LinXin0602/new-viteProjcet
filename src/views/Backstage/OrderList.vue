@@ -32,7 +32,7 @@
               </li>
             </ul>
           </td>
-          <td>NT : {{ Math.round(item.total) }}</td>
+          <td>NT $ {{ Math.round(item.total) }}</td>
           <td>
             <input
               :id="`paidSwitch${item.id}`"

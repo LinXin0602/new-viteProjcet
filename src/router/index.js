@@ -61,6 +61,11 @@ const router = createRouter({
       component: () => import('@/views/Front/UserBoard.vue'),
       children: [
         {
+          path: 'aboutview',
+          name: 'aboutview',
+          component: () => import('@/views/Front/AboutView.vue'),
+        },
+        {
           path: 'articlelistview',
           name: 'articlelistview',
           component: () => import('@/views/Front/ArticleListView.vue'),
