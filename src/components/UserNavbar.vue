@@ -1,11 +1,8 @@
 <template lang="">
   <loading-overlay :active="isLoading"></loading-overlay>
-  <div
-    ref="navbarRef"
-    class="w-full fixed top-0 z-50 h-16 navbar bg-gray-300 rounded-b-xl shadow-lg"
-  >
+  <div ref="navbarRef" class="w-full fixed top-0 z-50 h-20 navbar rounded-b-xl">
     <div class="flex-1 mx-5">
-      <router-link :to="{ name: 'userboard' }">
+      <router-link :to="{ name: 'homeview' }">
         <img class="h-12" src="../assets/thisballLogo_preview_rev_1.png" alt=""
       /></router-link>
     </div>
@@ -38,7 +35,7 @@
         <transition name="slide-down">
           <div
             v-if="showDropdown"
-            class="h-40 fixed w-2/5 sm:w-2/6 right-10 top-16 bg-gray-200 rounded-b-xl duration-200"
+            class="h-40 fixed w-2/5 sm:w-2/6 right-10 top-20 bg-gray-200 rounded-b-xl duration-200"
           >
             <ul class="flex h-full flex-col justify-around text-lg">
               <li class="">
@@ -97,7 +94,7 @@
         </div>
       </div>
 
-      <div class="dropdown dropdown-end">
+      <div class="dropdown dropdown-end mx-5">
         <label
           tabindex="0"
           class="btn btn-ghost btn-circle drawer-overlay"
@@ -252,6 +249,7 @@ const { shopingCart, isLoading } = storeToRefs(userProductsStroes);
 const { getShopingCart, deleteCart, checkQty } = userProductsStroes;
 getShopingCart();
 
+//顯示toTop圖標
 const toTopRef = ref(null);
 onMounted(() => {
   const toTop = toTopRef.value;
@@ -264,6 +262,7 @@ onMounted(() => {
     }
   });
 });
+//到頁面最上層點擊事件
 const toTop = () => {
   window.scrollTo({
     top: 0,
@@ -282,9 +281,9 @@ onMounted(() => {
   const navbar = navbarRef.value;
   window.addEventListener('scroll', () => {
     if (window.pageYOffset > 0) {
-      navbar.classList.add('scroll-down');
+      navbar.classList.add('scroll-down', 'shadow-lg');
     } else {
-      navbar.classList.remove('scroll-down');
+      navbar.classList.remove('scroll-down', 'shadow-lg');
       navbar.classList.add('scroll-down-removed');
     }
   });
@@ -299,14 +298,14 @@ input[type='number']::-webkit-inner-spin-button {
 }
 .scroll-down {
   transform-origin: top;
-  height: 3.5rem;
+
   transition: all 0.4s ease-in-out;
-  background-color: rgb(243, 244, 246);
+  background-color: rgb(209, 213, 219);
   opacity: 0.9;
   position: fixed;
   top: 0;
+
   z-index: 90;
-  transform: scaleY(0.98);
 }
 .scroll-down-removed {
   transition: all 0.4s ease-in-out;
