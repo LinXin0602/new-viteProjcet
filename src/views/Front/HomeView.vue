@@ -1,0 +1,188 @@
+<template>
+  <div class="h-[50vh] md:h-[70vh] relative mx-auto bg-gray-200">
+    <div class="w-full absolute h-full bg-transparent/10"></div>
+    <img
+      class="max-w-full w-full h-full object-cover block object-center"
+      src="../../assets/img/封面.jpg"
+      alt=""
+    />
+  </div>
+  <div
+    class="container h-auto mt-16 mx-auto w-2/3 items-center md:grid md:grid-cols-11"
+  >
+    <div class="my-5 col-span-4 col-end-5">
+      <h2 class="text-2xl">This BALL.Afternoon</h2>
+      <div class="divider my-5"></div>
+      <p class="text-center text-lg">
+        秋天 這個午後吹著橘黃色的風 她點上一抹淡妝 挑上衣櫥裡那件碎花洋裝
+        安排了一場一個人的約會 「我要一份巧可、 一份生乳酪、 一杯熱拿鐵。」
+        鬆餅香、咖啡香 和告五人交織出緩慢的時空 嘴裡咀嚼完鮮奶油和鬆餅球
+        她喝了口熱拿鐵 凝望了一會似曾相識淡黃色的圓
+      </p>
+    </div>
+    <img
+      src="../../assets/img/封面2.jpg"
+      alt=""
+      class="col-span-5 col-end-12 opacity-80"
+    />
+  </div>
+  <div
+    class="container h-auto lg:-translate-y-6 mx-auto mb-16 w-2/3 items-center md:grid md:grid-cols-11 flex flex-col-reverse"
+  >
+    <img
+      src="../../assets/img/封面3.jpg"
+      alt=""
+      class="col-span-5 col-end-6 opacity-80"
+    />
+    <div class="my-5 col-span-4 col-end-12">
+      <h2 class="text-2xl text-end">This BALL.Midnight</h2>
+      <div class="divider my-5"></div>
+      <p class="text-center text-lg">
+        時間來到下半場 耳邊響起的是《The Night We Met》 旋律 是緩緩的 是輕輕的
+        是柔軟的 腳步 是踟躇著 是交錯著 是糾纏著 不知歸期也漫無目的的旅人
+        也許終章依舊是回到埋藏在深處的 熟悉的遠方
+      </p>
+      <p class="text-center text-lg">
+        如果想找我們聊聊天 可以起身往高吧台坐著 我們就會懂你的明白了
+      </p>
+    </div>
+  </div>
+  <div
+    class="h-[60vh] bg-gray-50 p-5 px-10 lg:px-16 flex flex-col justify-around"
+  >
+    <h3 class="text-3xl md:mx-6 m-6">關於那些事</h3>
+    <Swiper
+      class="h-72 w-full"
+      :modules="modules"
+      :spaceBetween="100"
+      :slides-per-view="1"
+      :breakpoints="{
+        560: {
+          slidesPerView: 2,
+          spaceBetween: 80,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 60,
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 100,
+        },
+      }"
+      :pagination="{ clickable: true }"
+      :autoplay="{ delay: 2500, disableOnInteraction: false }"
+    >
+      <swiper-slide
+        style="display: flex"
+        v-for="(item, index) in UserArticleList"
+        :key="index"
+        class="p-6 border-2 border-gray-500/50 flex flex-col duration-300 touch"
+      >
+        <h3 class="text-xl basis-1/4 justify-center">
+          {{ DayDate(item.create_at) }}
+        </h3>
+        <router-link
+          :to="{ name: 'articleview', params: { id: item.id } }"
+          class="text-2xl basis-2/4 link-hover"
+          >{{ item.title }} ></router-link
+        >
+        <p class="w-1/2 text-3xl">→</p>
+      </swiper-slide>
+    </Swiper>
+  </div>
+  <div class="divider my-2 mb-14"></div>
+  <div class="flex flex-col h-96 w-2/3 mx-auto">
+    <h3 class="text-3xl basis-1/5">來點Talk吧</h3>
+    <p class="text-xl my-5 basis-1/5">
+      慶祝This.Ball即將邁入第五周年!!!
+      不管是開心、難過、或是想跟我們說說話，都可以在下方留言，將會得到意外的小驚喜喔!!
+    </p>
+    <form
+      for="my-modal"
+      class="basis-2/5 flex flex-col"
+      @submit.prevent="submitMessage"
+    >
+      <textarea
+        v-model="userMessage"
+        class="w-full textarea textarea-bordered"
+        placeholder="來點Talk吧 , 來跟我們說說話"
+        name=""
+        id=""
+        rows="5"
+      ></textarea>
+      <button class="btn">送出</button>
+    </form>
+    <input ref="modalRef" type="checkbox" id="my-modal" class="modal-toggle" />
+    <div class="modal">
+      <div class="modal-box">
+        <h3 v-if="userMessage === ''" class="font-bold text-lg">
+          您尚未給我們任何留言,無法獲得小驚喜喔!
+        </h3>
+        <h3 v-else class="font-bold text-lg">
+          慶祝This.Ball即將五周年,這裡附上折價券,於結帳頁面時可以使用!! <br />
+          優惠碼:ThisBall 5th Anniversary
+          <button @click="copyOrderid">
+            <font-awesome-icon
+              icon="fa-solid fa-copy"
+              class="ml-3 hover:text-gray-400 text-gray-600 text-xl"
+            />
+          </button>
+        </h3>
+        <div class="modal-action">
+          <label
+            @click="submitMessage(), (userMessage = '')"
+            for="my-modal  "
+            class="btn"
+            >確定!</label
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script setup>
+import { useToast } from 'vue-toastification';
+const toast = useToast();
+import { changeDate } from '../../composables/useDateChange';
+const { DayDate } = changeDate();
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Pagination, Autoplay } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+import 'swiper/css/autoplay';
+const modules = [Pagination, Autoplay];
+import { useArticleStores } from '../../stores/ArticleStores';
+import { storeToRefs } from 'pinia';
+import { ref } from 'vue';
+const ArticleStores = useArticleStores();
+const { UserArticleList } = storeToRefs(ArticleStores);
+const { getUserArticleList } = ArticleStores;
+getUserArticleList();
+
+const modalRef = ref(null);
+const userMessage = ref('');
+const submitMessage = () => {
+  const value = modalRef.value;
+  value.checked = !value.checked;
+  console.log(value.checked);
+};
+const copyOrderid = () => {
+  toast.info(`已複製優惠碼 ThisBall 5th Anniversary`);
+  navigator.clipboard.writeText('ThisBall 5th Anniversary');
+};
+</script>
+
+<style lang="scss" scoped>
+div {
+  .touch:hover {
+    transform: translateY(-1rem);
+    color: white;
+    background-color: rgb(146, 155, 174);
+    p {
+      display: none;
+    }
+  }
+}
+</style>

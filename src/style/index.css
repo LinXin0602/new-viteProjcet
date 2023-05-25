@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  padding-top: 4rem;
-}
-
 * {
   padding: 0;
   margin: 0;

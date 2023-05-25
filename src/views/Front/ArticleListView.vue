@@ -5,16 +5,16 @@
   <div class="divider my-2 mb-14"></div>
   <div
     data-aos="fade-right"
-    data-aos-offset="300"
+    data-aos-offset="100"
     data-aos-easing="ease-in-sine"
-    class="container mx-auto w-4/5 justify-center lg:w-3/5"
+    class="mx-auto w-4/5 justify-center lg:w-3/5"
     v-for="item in UserArticleList"
     :key="item.id"
   >
     <div class="card md:card-side bg-gray-100 shadow-xl lg:h-64">
       <img
         @click="goArticle(item.id)"
-        class="md:w-2/6 lg:w-auto bg-cover cursor-pointer"
+        class="md:w-2/6 object-cover object-center max-w-full lg:w-2/6 h-full cursor-pointer"
         :src="item.image"
         :alt="item.image"
       />

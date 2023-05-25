@@ -9,14 +9,14 @@
   <div class="divider"></div>
   <div
     v-if="shopingCart.carts?.length"
-    class="container mx-auto grid grid-cols-1 lg:grid-cols-12"
+    class="md:w-4/5 mx-auto lg:w-full grid grid-cols-1 lg:grid-cols-12"
   >
     <div class="mx-3 col-span-1 lg:col-start-2 lg:col-span-6">
-      <table class="table table-compact md:table w-full lg:w-full">
+      <table class="table table-compact w-full">
         <thead>
           <tr>
             <th></th>
-            <th></th>
+            <th class="sm:w-1/4"></th>
 
             <th>品名</th>
             <th>數量</th>
@@ -50,7 +50,7 @@
             </th>
             <td>
               <img
-                class="w-0 md:w-1/2 lg:w-full xl:h-24"
+                class="bg-cover border border-transparent rounded hidden sm:block"
                 :src="item.product.imageUrl"
                 alt=""
               />
@@ -98,9 +98,9 @@
         </form>
         <div
           v-if="shopingCart.final_total === shopingCart.total"
-          class="text-xl"
+          class="flex text-xl mt-5 md:mt-0"
         >
-          總金額 : {{ shopingCart.total }}
+          總金額 : NT${{ shopingCart.total }}
         </div>
         <div
           v-else
@@ -113,7 +113,7 @@
     </div>
 
     <div
-      class="mt-10 lg:mt-0 col-span-1 lg:col-span-4 bg-gray-50 p-6 rounded-lg"
+      class="mt-10 mx-3 lg:mt-0 col-span-1 lg:col-span-4 bg-gray-50 p-6 rounded-lg"
     >
       <div class="mt-4 flex justify-center text-3xl">
         <h2>填寫購物資訊</h2>

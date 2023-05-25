@@ -1,11 +1,11 @@
 <template>
   <loading-overlay :active="isLoading"></loading-overlay>
-  <div class="bg-white">
+  <div class="bg-white mt-5">
     <div class="tabs flex justify-center h-24">
       <ul>
         <li
-          :class="{ 'tab-bordered tab-active': productStyle === '' }"
-          class="px-5 tab hover:tab-bordered"
+          :class="{ 'tab-bordered tab-active ': productStyle === '' }"
+          class="px-5 tab hover:tab-bordere"
           @click="(productStyle = ''), getProducts()"
         >
           全部商品
@@ -35,6 +35,21 @@
         </li>
       </ul>
     </div>
+    <div class="flex justify-end mx-5">
+      <form action="">
+        <input
+          class="input input-sm input-bordered my-5 md:my-0 mx-2"
+          type="text"
+          placeholder="輸入商品名稱"
+        />
+        <button class="">
+          <font-awesome-icon
+            class="text-xl"
+            :icon="['fas', 'magnifying-glass']"
+          />
+        </button>
+      </form>
+    </div>
     <div class="divider my-1"></div>
     <div class="mx-auto max-w-2xl px-4 sm:px-6 py-6 lg:max-w-7xl lg:px-8">
       <div
@@ -44,7 +59,7 @@
           @click="goProduct(item.id)"
           v-for="item in filteredProducts"
           :key="item.id"
-          class="group hover:scale-105 duration-200 cursor-pointer hover:shadow-md"
+          class="group hover:scale-105 duration-200 cursor-pointer shadow-lg border-2 border-gray-300/50 rounded-lg"
         >
           <div
             class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"

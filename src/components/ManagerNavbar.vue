@@ -1,7 +1,5 @@
 <template lang="">
-  <div
-    class="w-full fixed top-0 z-50 h-16 navbar bg-gray-200 rounded-b-xl shadow-xl"
-  >
+  <div class="w-full top-0 z-50 h-16 navbar bg-gray-200 rounded-b-xl shadow-xl">
     <div class="flex-1 mx-5">
       <router-link :to="{ name: 'productdata' }">
         <img
@@ -34,7 +32,7 @@
           >
         </li>
         <li>
-          <router-link class="btn btn-ghost" :to="{ name: 'userboard' }"
+          <router-link class="btn btn-ghost" :to="{ name: 'homeview' }"
             >前台頁面</router-link
           >
         </li>

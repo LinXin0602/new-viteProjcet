@@ -11,7 +11,7 @@
   <div class="flex justify-between min-w-0 px-8">
     <div class="text-sm breadcrumbs">
       <ul>
-        <li><router-link to>首頁</router-link></li>
+        <li><router-link :to="{ name: 'homeview' }">首頁</router-link></li>
         <li>
           <router-link :to="{ name: 'articlelistview' }"
             >關於那些事</router-link

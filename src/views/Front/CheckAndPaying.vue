@@ -8,7 +8,9 @@
   </div>
   <div class="divider"></div>
   <div class="container mx-auto justify-center flex flex-row">
-    <div class="mx-3 p-6 basis-2/3 lg:basis-1/2 rounded-lg bg-gray-100">
+    <div
+      class="mx-3 p-6 basis-4/5 lg:basis-2/3 xl:basis-1/2 rounded-lg bg-gray-100"
+    >
       <div class="h-12 text-3xl flex justify-center items-center">
         <h2>訂單資訊</h2>
       </div>
@@ -43,7 +45,7 @@
           </ul>
         </div>
       </div>
-      <table class="table w-full table-compact sm:table">
+      <table class="table w-full table-compact">
         <tbody>
           <tr>
             <th>訂單編號</th>
@@ -51,10 +53,10 @@
               <div class="flex justify-between text-xs md:text-lg">
                 <p>{{ singleOrder.id }}</p>
                 <button @click="copyOrderid">
-                  <i
-                    class="ml-3 hover:text-gray-400 text-gray-600 fa fa-copy fa-lg"
-                  >
-                  </i>
+                  <font-awesome-icon
+                    icon="fa-solid fa-copy"
+                    class="ml-3 hover:text-gray-400 text-gray-600 text-xl"
+                  />
                 </button>
               </div>
             </td>
