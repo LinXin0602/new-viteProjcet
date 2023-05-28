@@ -54,8 +54,13 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 /* import specific icons */
-import { faCopy, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-library.add(faCopy, faMagnifyingGlass);
+import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+import {
+  faCopy,
+  faMagnifyingGlass,
+  faHeart,
+} from '@fortawesome/free-solid-svg-icons';
+library.add(faCopy, faMagnifyingGlass, faHeart, farHeart);
 
 // import 'font-awesome/css/font-awesome.min.css';
 const app = createApp(App);

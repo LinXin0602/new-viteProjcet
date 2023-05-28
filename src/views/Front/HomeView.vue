@@ -160,14 +160,14 @@ const ArticleStores = useArticleStores();
 const { UserArticleList } = storeToRefs(ArticleStores);
 const { getUserArticleList } = ArticleStores;
 getUserArticleList();
-
+//modal開關
 const modalRef = ref(null);
 const userMessage = ref('');
 const submitMessage = () => {
   const value = modalRef.value;
   value.checked = !value.checked;
-  console.log(value.checked);
 };
+//複製訊息
 const copyOrderid = () => {
   toast.info(`已複製優惠碼 ThisBall 5th Anniversary`);
   navigator.clipboard.writeText('ThisBall 5th Anniversary');

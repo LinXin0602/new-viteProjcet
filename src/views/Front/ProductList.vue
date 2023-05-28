@@ -36,13 +36,14 @@
       </ul>
     </div>
     <div class="flex justify-end mx-5">
-      <form action="">
+      <form @submit.prevent="searchItem">
         <input
+          v-model="searchProduct"
           class="input input-sm input-bordered my-5 md:my-0 mx-2"
           type="text"
           placeholder="輸入商品名稱"
         />
-        <button class="">
+        <button>
           <font-awesome-icon
             class="text-xl"
             :icon="['fas', 'magnifying-glass']"
@@ -59,10 +60,10 @@
           @click="goProduct(item.id)"
           v-for="item in filteredProducts"
           :key="item.id"
-          class="group hover:scale-105 duration-200 cursor-pointer shadow-lg border-2 border-gray-300/50 rounded-lg"
+          class="group hover:scale-105 duration-200 cursor-pointer hover:shadow-2xl shadow-lg border-2 border-gray-300/50 rounded-lg p-2"
         >
           <div
-            class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
+            class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 relative"
           >
             <img
               :src="item.imageUrl"
@@ -71,22 +72,41 @@
             />
           </div>
           <h3 class="mt-4 mx-2 text-2xl text-gray-700">{{ item.title }}</h3>
-          <p class="mt-1 text-lg font-medium text-gray-900 mx-2">
-            售價 : NT${{ item.price }}
-          </p>
-          <button @click="goProduct(item.id)" class="btn w-full my-3">
-            查看更多
-          </button>
-          <button
-            v-if="status.loadingItem === item.id"
-            :disabled="status.loadingItem === item.id"
-            class="btn w-full loading"
-          >
-            加入購物車
-          </button>
-          <button v-else class="btn w-full" @click.stop="addShopingCart(item)">
-            加入購物車
-          </button>
+          <div class="flex justify-between">
+            <p class="my-1 text-lg font-medium text-gray-900 mx-2">
+              NT${{ item.price }}
+            </p>
+            <button>
+              <font-awesome-icon
+                v-if="favoriteItems.includes(item.id)"
+                @click.stop="addFavorite(item)"
+                class="text-3xl text-red-400 hover:scale-125 duration-200"
+                :icon="['fass', 'heart']"
+              /><font-awesome-icon
+                v-else
+                @click.stop="addFavorite(item)"
+                class="text-3xl text-gray-400 hover:scale-125 duration-200"
+                :icon="['far', 'heart']"
+              />
+            </button>
+          </div>
+
+          <div class="mt-3">
+            <button
+              v-if="status.loadingItem === item.id"
+              :disabled="status.loadingItem === item.id"
+              class="btn w-full loading"
+            >
+              加入購物車
+            </button>
+            <button
+              v-else
+              class="btn w-full"
+              @click.stop="addShopingCart(item)"
+            >
+              加入購物車
+            </button>
+          </div>
         </a>
       </div>
     </div>
@@ -94,8 +114,10 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useUserProductsStores } from '../../stores/UserProductsStores.js';
+import { useMyFavoriteStores } from '@/stores/MyFavoriteStores';
 const userProductsStroes = useUserProductsStores();
 const { getProducts, addShopingCart, getShopingCart } = userProductsStroes;
 const { status, isLoading, product, filteredProducts, productStyle } =
@@ -108,4 +130,20 @@ const goProduct = (id) => {
   product.value = {};
   router.push({ name: 'productintro', params: { id: id } });
 };
+//搜尋商品
+const searchProduct = ref('');
+const searchItem = () => {
+  if (searchProduct.value === '') {
+    getProducts();
+  } else {
+    filteredProducts.value = filteredProducts.value.filter((item) => {
+      return item.title.indexOf(searchProduct.value) !== -1;
+    });
+  }
+};
+
+const myFavoriteStores = useMyFavoriteStores();
+const { addFavorite, getLocalStorage } = myFavoriteStores;
+const { favoriteItems } = storeToRefs(myFavoriteStores);
+favoriteItems.value = getLocalStorage() || [];
 </script>

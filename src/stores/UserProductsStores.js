@@ -29,6 +29,7 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
       import.meta.env.VITE_PATH
     }/product/${id}`;
     axios.get(api).then((res) => {
+      console.log(res.data);
       isLoading.value = false;
       product.value = res.data.product;
     });
@@ -36,7 +37,7 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
   //取得商品列表
   const productStyle = ref('');
   const filteredProducts = ref([]);
-  const products = ref({});
+  const products = ref([]);
   const getProducts = () => {
     isLoading.value = true;
     const api = `${import.meta.env.VITE_API}api/${
@@ -44,7 +45,6 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
     }/products/all`;
     axios.get(api).then((res) => {
       isLoading.value = false;
-      console.log(res);
       products.value = res.data.products;
       filteredProducts.value = [];
       products.value.forEach((item) => {

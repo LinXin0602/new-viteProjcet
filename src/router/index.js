@@ -77,6 +77,11 @@ const router = createRouter({
           component: () => import('@/views/Front/ProductIntro.vue'),
         },
         {
+          path: 'favoriteview',
+          name: 'favoriteview',
+          component: () => import('@/views/Front/FavoriteView.vue'),
+        },
+        {
           path: 'checkout',
           name: 'checkout',
           component: () => import('@/views/Front/CheckOut.vue'),
