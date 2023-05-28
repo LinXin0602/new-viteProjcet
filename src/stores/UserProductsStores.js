@@ -29,7 +29,6 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
       import.meta.env.VITE_PATH
     }/product/${id}`;
     axios.get(api).then((res) => {
-      console.log(res.data);
       isLoading.value = false;
       product.value = res.data.product;
     });
@@ -57,12 +56,12 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
     });
   };
   //加入購物車
-  const addShopingCart = (item) => {
+  const addShopingCart = (item, qty = 1) => {
     status.value.loadingItem = item.id;
     const api = `${import.meta.env.VITE_API}api/${
       import.meta.env.VITE_PATH
     }/cart`;
-    axios.post(api, { data: { product_id: item.id, qty: 1 } }).then((res) => {
+    axios.post(api, { data: { product_id: item.id, qty: qty } }).then((res) => {
       toastMessage(res, `【${item.title}】`, '成功加入購物車');
       status.value.loadingItem = '';
       getShopingCart();
