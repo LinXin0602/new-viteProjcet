@@ -24,6 +24,13 @@
         </li>
         <li>
           <router-link
+            :to="{ name: 'favoriteview' }"
+            class="underline-transition mx-5 font-mono font-bold hover:scale-105 duration-300"
+            >那些最愛</router-link
+          >
+        </li>
+        <li>
+          <router-link
             :to="{ name: 'productlist' }"
             class="underline-transition mx-5 font-mono font-bold hover:scale-105 duration-300"
             >那些食物</router-link
@@ -50,6 +57,13 @@
                   :to="{ name: 'articlelistview' }"
                   class="underline-transition mx-5 font-mono font-bold hover:scale-105 duration-300"
                   >關於那些事</router-link
+                >
+              </li>
+              <li>
+                <router-link
+                  :to="{ name: 'favoriteview' }"
+                  class="underline-transition mx-5 font-mono font-bold hover:scale-105 duration-300"
+                  >那些最愛</router-link
                 >
               </li>
               <li>
@@ -95,11 +109,7 @@
       </div>
 
       <div class="dropdown dropdown-end mx-5">
-        <label
-          tabindex="0"
-          class="btn btn-ghost btn-circle drawer-overlay"
-          for="sidecart"
-        >
+        <label tabindex="0" class="btn btn-ghost btn-circle drawer-overlay">
           <div class="indicator">
             <svg
               xmlns="http://www.w3.org/2000/svg"
