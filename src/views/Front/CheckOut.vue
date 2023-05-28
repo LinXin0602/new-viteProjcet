@@ -1,5 +1,5 @@
 <template lang="" class="h-full">
-  <div class="lg:h-52 h-24 md:h-36 flex justify-center items-center">
+  <div class="lg:h-52 mt-20 h-24 md:h-36 flex justify-center items-center">
     <ul class="steps">
       <li class="step step-primary">填寫訂單</li>
       <li class="step">確認資料及付款</li>
@@ -9,7 +9,7 @@
   <div class="divider"></div>
   <div
     v-if="shopingCart.carts?.length"
-    class="md:w-4/5 mx-auto lg:w-full grid grid-cols-1 lg:grid-cols-12"
+    class="md:w-5/6 mx-auto lg:w-full grid grid-cols-1 lg:grid-cols-12"
   >
     <div class="mx-3 col-span-1 lg:col-start-2 lg:col-span-6">
       <table class="table table-compact w-full">
@@ -211,8 +211,10 @@
       <button class="btn m-3" @click="goUserProduct">來去逛逛唄</button>
     </div>
   </div>
+  <ProductsRecommended />
 </template>
 <script setup>
+import ProductsRecommended from '@/components/ProductsRecommended.vue';
 import { useRouter } from 'vue-router';
 import { computed } from 'vue';
 import { storeToRefs } from 'pinia';

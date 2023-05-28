@@ -42,7 +42,7 @@
         <transition name="slide-down">
           <div
             v-if="showDropdown"
-            class="h-40 fixed w-2/5 sm:w-2/6 right-10 top-20 bg-gray-200 rounded-b-xl duration-200"
+            class="h-72 fixed w-2/5 sm:w-2/6 right-10 top-20 bg-gray-100 rounded-b-xl duration-200 menu"
           >
             <ul class="flex h-full flex-col justify-around text-lg">
               <li class="">
@@ -136,7 +136,7 @@
         >
           <div
             v-if="shopingCart.carts?.length > 0"
-            class="card-body bg-slate-50 w-96 lg:w-full"
+            class="card-body bg-slate-50 w-80 md:w-full"
           >
             <div class="overflow-x-auto max-h-96">
               <table class="table">

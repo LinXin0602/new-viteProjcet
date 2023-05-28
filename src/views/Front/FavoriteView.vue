@@ -5,17 +5,15 @@
   <div class="divider my-2 mb-14"></div>
 
   <div
-    v-if="favoriteList.length < 1"
+    v-if="favoriteItems.length < 1"
     class="h-80 w-3/4 mx-auto bg-gray-100 mt-12 flex flex-col items-center justify-center p-10"
   >
     <h2 class="text-3xl">
       這麼多好吃的竟然沒有最愛，那你一定還沒逛我們的商品！！
     </h2>
-    <router-link
-      class="btn bg-gray-300 rounded-md text-2xl mt-10"
-      :to="{ name: 'productlist' }"
-      >趕快去看看！！</router-link
-    >
+    <button class="btn bg-gray-300 rounded-md text-2xl mt-10">
+      <router-link :to="{ name: 'productlist' }">趕快去看看</router-link>
+    </button>
   </div>
   <div v-else class="mx-auto max-w-2xl px-4 sm:px-6 py-6 lg:max-w-7xl lg:px-8">
     <div
@@ -81,12 +79,12 @@ import { storeToRefs } from 'pinia';
 import { useMyFavoriteStores } from '@/stores/MyFavoriteStores';
 // import axios from 'axios';
 import { useUserProductsStores } from '../../stores/UserProductsStores.js';
+import { useRouter } from 'vue-router';
 
 const userProductsStroes = useUserProductsStores();
 const { addShopingCart } = userProductsStroes;
 const { status, product } = storeToRefs(userProductsStroes);
 
-import { useRouter } from 'vue-router';
 const router = useRouter();
 const goProduct = (id) => {
   product.value = {};
@@ -98,6 +96,7 @@ const { getLocalStorage, addFavorite } = myFavoriteStores;
 const { favoriteItems } = storeToRefs(myFavoriteStores);
 favoriteItems.value = getLocalStorage() || [];
 
+//獲取所有商品
 const products = ref([]);
 const getProducts = () => {
   const api = `${import.meta.env.VITE_API}api/${
@@ -121,6 +120,5 @@ const getFavoriteList = () => {
 };
 
 getProducts();
-console.log(favoriteList.value);
 </script>
 <style lang=""></style>

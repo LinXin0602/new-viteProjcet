@@ -11,7 +11,7 @@ export const useMyFavoriteStores = defineStore('myFavoriteStores', () => {
     if (favoriteItems.value.includes(item.id)) {
       favoriteItems.value.splice(favoriteItems.value.indexOf(item.id), 1);
       console.log(item);
-      toast.success(`成功將【${item.title}】移除最愛`);
+      toast.warning(`成功將【${item.title}】移除最愛`);
     } else {
       favoriteItems.value.push(item.id);
       toast.success(`成功將【${item.title}】加入最愛`);

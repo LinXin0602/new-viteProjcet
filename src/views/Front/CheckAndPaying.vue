@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="lg:h-52 h-24 md:h-36 flex justify-center items-center">
+  <div class="lg:h-52 mt-20 h-24 md:h-36 flex justify-center items-center">
     <ul class="steps">
       <li class="step step-primary">填寫訂單</li>
       <li class="step step-primary">確認資料及付款</li>

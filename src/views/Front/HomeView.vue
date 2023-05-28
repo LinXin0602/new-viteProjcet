@@ -91,12 +91,12 @@
       </swiper-slide>
     </Swiper>
   </div>
-  <div class="divider my-2 mb-14"></div>
-  <div class="flex flex-col h-96 w-2/3 mx-auto">
+
+  <div class="flex flex-col h-96 w-2/3 mx-auto mt-10">
     <h3 class="text-3xl basis-1/5">來點Talk吧</h3>
     <p class="text-xl my-5 basis-1/5">
-      慶祝This.Ball即將邁入第五周年!!!
-      不管是開心、難過、或是想跟我們說說話，都可以在下方留言，將會得到意外的小驚喜喔!!
+      慶祝This.Ball即將邁入第五周年！！
+      不管是開心、難過、或是想跟我們說說話，都可以在下方留言，將會得到意外的小驚喜喔！！
     </p>
     <form
       for="my-modal"
@@ -120,7 +120,7 @@
           您尚未給我們任何留言,無法獲得小驚喜喔!
         </h3>
         <h3 v-else class="font-bold text-lg">
-          慶祝This.Ball即將五周年,這裡附上折價券,於結帳頁面時可以使用!! <br />
+          慶祝This.Ball即將五周年,這裡附上折價券,於結帳頁面時可以使用！！ <br />
           優惠碼:ThisBall 5th Anniversary
           <button @click="copyOrderid">
             <font-awesome-icon
@@ -140,6 +140,44 @@
       </div>
     </div>
   </div>
+  <div class="p-8 bg-gray-50 mt-10 flex flex-col">
+    <h2 class="text-3xl md:mx-6 m-6">我們在這</h2>
+    <div class="w-4/5 mx-auto flex flex-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.613088854264!2d120.29658977502949!3d22.630919079450255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e05ceea01149f%3A0xf451550e9f85d6db!2zVGhpc0JBTEzmiYvnh5LprIbppIXnkIPvvZzkuI3pmZDmmYLlkpbllaHlu7PvvZznqbrplpPnp5_lgJ8!5e0!3m2!1szh-TW!2stw!4v1685285101427!5m2!1szh-TW!2stw"
+        height="300"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        class="w-full lg:basis-1/3 flex-grow mr-10"
+      ></iframe>
+
+      <table class="table w-full lg:basis-1/3 flex-grow mt-6 lg:mt-0">
+        <tbody>
+          <tr class="hover">
+            <th>店名</th>
+            <td>手燒鬆餅球｜咖啡｜空間</td>
+          </tr>
+          <tr class="hover">
+            <th>地址</th>
+            <td>高雄市新興區自立二路72號</td>
+          </tr>
+          <tr class="hover">
+            <th>電話</th>
+            <td>07-2851500</td>
+          </tr>
+          <tr class="hover">
+            <th>營業時間</th>
+            <td>11:00-19:00 無公休</td>
+          </tr>
+          <tr class="hover">
+            <th>服務內容</th>
+            <td>內用 · 外帶 · 外送．Talk</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </template>
 <script setup>
 import { useToast } from 'vue-toastification';
@@ -150,9 +188,9 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
-
 import 'swiper/css/autoplay';
 const modules = [Pagination, Autoplay];
+
 import { useArticleStores } from '../../stores/ArticleStores';
 import { storeToRefs } from 'pinia';
 import { ref } from 'vue';

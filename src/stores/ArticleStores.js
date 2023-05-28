@@ -29,16 +29,14 @@ export const useArticleStores = defineStore('ArticleStores', () => {
       const api = `${import.meta.env.VITE_API}api/${
         import.meta.env.VITE_PATH
       }/admin/article/${item.id}`;
-      axios.put(api, { data: { ...item } }).then((res) => {
-        console.log(res);
+      axios.put(api, { data: { ...item } }).then(() => {
         getArticleList();
       });
     } else {
       const api = `${import.meta.env.VITE_API}api/${
         import.meta.env.VITE_PATH
       }/admin/article`;
-      axios.post(api, { data: { ...tempArticle.value } }).then((res) => {
-        console.log(res);
+      axios.post(api, { data: { ...tempArticle.value } }).then(() => {
         getArticleList();
       });
     }
@@ -49,7 +47,6 @@ export const useArticleStores = defineStore('ArticleStores', () => {
       import.meta.env.VITE_PATH
     }/admin/articles?page=${page}`;
     axios.get(api).then((res) => {
-      console.log(res);
       articleList.value = res.data.articles;
     });
   };
@@ -59,7 +56,6 @@ export const useArticleStores = defineStore('ArticleStores', () => {
       import.meta.env.VITE_PATH
     }/articles?page=${page}`;
     axios.get(api).then((res) => {
-      console.log(res);
       UserArticleList.value = res.data.articles;
     });
   };
@@ -70,7 +66,6 @@ export const useArticleStores = defineStore('ArticleStores', () => {
     }/admin/article/${id}`;
     axios.get(api).then((res) => {
       tempArticle.value.content = res.data.article.content;
-      console.log(res);
     });
   };
   //獲取Uesr端單筆文章
@@ -80,7 +75,6 @@ export const useArticleStores = defineStore('ArticleStores', () => {
     }/article/${id}`;
     axios.get(api).then((res) => {
       userTempArticle.value = res.data.article;
-      console.log(res);
     });
   };
   //刪除文章
@@ -90,7 +84,7 @@ export const useArticleStores = defineStore('ArticleStores', () => {
     }/admin/article/${tempArticle.value.id}`;
     axios.delete(api).then((res) => {
       toastMessage(res, `文章【${tempArticle.value.title}】刪除成功`, '');
-      console.log(res);
+
       getArticleList();
     });
   };
