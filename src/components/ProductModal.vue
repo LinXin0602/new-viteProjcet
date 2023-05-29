@@ -159,6 +159,7 @@ const productsStroe = useProductsStroes();
 const { tempProduct, isAdd } = storeToRefs(productsStroe);
 const { updateItem } = productsStroe;
 
+//上傳圖片API
 const fileInput = ref(null);
 const uploadFile = () => {
   const uploadFile = fileInput.value.files[0];

@@ -229,6 +229,7 @@ const goUserProduct = () => {
 };
 
 getShopingCart();
+//計算折扣百分比
 const discount = computed(() => {
   return (1 - shopingCart.value.final_total / shopingCart.value.total) * 100;
 });

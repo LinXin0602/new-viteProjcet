@@ -117,6 +117,7 @@ const userProductsStroes = useUserProductsStores();
 const { singleOrder } = storeToRefs(userProductsStroes);
 const { getOrder, paying } = userProductsStroes;
 const { TimeDate } = changeDate();
+//複製文字
 const copyOrderid = () => {
   toast.info(`已複製訂單 ${singleOrder.value.id} `);
   navigator.clipboard.writeText(singleOrder.value.id);
