@@ -1,4 +1,5 @@
 <template lang="">
+  <loading-overlay :active="isLoading"></loading-overlay>
   <div class="h-48 font-semibold flex justify-center items-center text-3xl">
     <h2
       data-aos="zoom-in"
@@ -48,7 +49,7 @@ import { useArticleStores } from '../../stores/ArticleStores';
 import { changeDate } from '../../composables/useDateChange';
 const { DayDate } = changeDate();
 const ArticleStores = useArticleStores();
-const { userTempArticle } = storeToRefs(ArticleStores);
+const { userTempArticle, isLoading } = storeToRefs(ArticleStores);
 const { getUserArticle } = ArticleStores;
 const route = useRoute();
 const articleId = route.params.id;

@@ -8,15 +8,17 @@ export default {
     themes: [
       {
         wireframe: {
+          // eslint-disable-next-line no-undef
           ...require('daisyui/src/colors/themes')['[data-theme=wireframe]'],
           accent: '#5878c9',
-          info: '#9CC6EC',
+          info: '#79BED2',
           success: '#6EE7A1',
           error: '#DA2E2B',
         },
       },
     ],
   },
+  // eslint-disable-next-line no-undef
   plugins: [require('daisyui')],
   'files.associations': {
     '*.css': 'tailwindcss',

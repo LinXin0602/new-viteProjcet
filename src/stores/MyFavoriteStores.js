@@ -4,7 +4,7 @@ import { useToast } from 'vue-toastification';
 
 export const useMyFavoriteStores = defineStore('myFavoriteStores', () => {
   const toast = useToast();
-
+  const isLoading = ref(false);
   //加入到我的最愛
   const favoriteItems = ref([]);
   const addFavorite = (item) => {
@@ -28,5 +28,6 @@ export const useMyFavoriteStores = defineStore('myFavoriteStores', () => {
     addFavorite,
     getLocalStorage,
     favoriteItems,
+    isLoading,
   };
 });

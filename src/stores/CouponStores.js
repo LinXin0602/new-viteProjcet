@@ -50,6 +50,7 @@ export const useCouponStores = defineStore('CouponStores', () => {
       });
     }
   };
+  //刪除優惠券API
   const dealeteCoupon = () => {
     const api = `${import.meta.env.VITE_API}api/${
       import.meta.env.VITE_PATH
@@ -60,6 +61,7 @@ export const useCouponStores = defineStore('CouponStores', () => {
       getCoupons();
     });
   };
+  //獲取單筆資料
   const getItem = (item) => {
     tempCoupon.value = { ...item };
   };

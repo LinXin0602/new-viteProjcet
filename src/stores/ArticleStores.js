@@ -11,6 +11,7 @@ export const useArticleStores = defineStore('ArticleStores', () => {
     content: '',
     image: '',
   });
+  const isLoading = ref(false);
   //管理者單筆文章
   const tempArticle = ref({
     create_at: Math.floor(Date.now() / 1000),
@@ -52,11 +53,13 @@ export const useArticleStores = defineStore('ArticleStores', () => {
   };
   //取得User端文章列表
   const getUserArticleList = (page = 1) => {
+    isLoading.value = true;
     const api = `${import.meta.env.VITE_API}api/${
       import.meta.env.VITE_PATH
     }/articles?page=${page}`;
     axios.get(api).then((res) => {
       UserArticleList.value = res.data.articles;
+      isLoading.value = false;
     });
   };
   //獲取單筆文章
@@ -70,11 +73,13 @@ export const useArticleStores = defineStore('ArticleStores', () => {
   };
   //獲取Uesr端單筆文章
   const getUserArticle = (id) => {
+    isLoading.value = true;
     const api = `${import.meta.env.VITE_API}api/${
       import.meta.env.VITE_PATH
     }/article/${id}`;
     axios.get(api).then((res) => {
       userTempArticle.value = res.data.article;
+      isLoading.value = false;
     });
   };
   //刪除文章
@@ -88,6 +93,7 @@ export const useArticleStores = defineStore('ArticleStores', () => {
       getArticleList();
     });
   };
+  //取得單筆資料
   const getItem = (item) => {
     tempArticle.value = { ...item };
     getArticle(item.id);
@@ -106,5 +112,6 @@ export const useArticleStores = defineStore('ArticleStores', () => {
     UserArticleList,
     getUserArticle,
     userTempArticle,
+    isLoading,
   };
 });

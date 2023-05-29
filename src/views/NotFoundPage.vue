@@ -18,8 +18,8 @@
 }
 </style>
 <template>
-  <div class="bg-gray-100 h-screen justify-center">
-    <center class="mt-24 m-auto">
+  <div class="bg-gray-100 py-10 h-screen justify-center">
+    <center class="mt-10 m-auto">
       <svg
         class="emoji-404"
         enable-background="new 0 0 226 249.135"
@@ -112,17 +112,17 @@
       </svg>
       <div class="tracking-widest mt-4">
         <span class="text-gray-500 text-6xl block"><span>4 0 4</span></span>
-        <span class="text-gray-500 text-xl"
-          >Sorry, We couldn't find what you are looking for!</span
-        >
+        <p class="text-gray-500 text-xl mt-4">
+          很抱歉，這裡不是你該來的地方，請回ThisBall看看吃的
+        </p>
       </div>
     </center>
     <center class="mt-6">
-      <a
-        href="{{url()->previous()}}"
+      <router-link
         class="text-gray-500 font-mono text-xl bg-gray-200 p-3 rounded-md hover:shadow-md"
-        >Go back
-      </a>
+        :to="{ name: 'homeview' }"
+        >ThisBall</router-link
+      >
     </center>
   </div>
 </template>

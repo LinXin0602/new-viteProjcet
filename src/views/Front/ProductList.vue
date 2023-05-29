@@ -118,11 +118,12 @@ import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useUserProductsStores } from '../../stores/UserProductsStores.js';
 import { useMyFavoriteStores } from '@/stores/MyFavoriteStores';
+import { useRouter } from 'vue-router';
 const userProductsStroes = useUserProductsStores();
 const { getProducts, addShopingCart, getShopingCart } = userProductsStroes;
 const { status, isLoading, product, filteredProducts, productStyle } =
   storeToRefs(userProductsStroes);
-import { useRouter } from 'vue-router';
+
 const router = useRouter();
 getProducts();
 getShopingCart();

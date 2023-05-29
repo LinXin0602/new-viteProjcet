@@ -60,7 +60,20 @@ import {
   faMagnifyingGlass,
   faHeart,
 } from '@fortawesome/free-solid-svg-icons';
-library.add(faCopy, faMagnifyingGlass, faHeart, farHeart);
+import {
+  faGithub,
+  faInstagram,
+  faFacebook,
+} from '@fortawesome/free-brands-svg-icons';
+library.add(
+  faCopy,
+  faMagnifyingGlass,
+  faHeart,
+  farHeart,
+  faGithub,
+  faInstagram,
+  faFacebook
+);
 
 // import 'font-awesome/css/font-awesome.min.css';
 const app = createApp(App);

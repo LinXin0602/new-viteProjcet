@@ -1,4 +1,5 @@
 <template lang="">
+  <loading-overlay :active="isLoading"> </loading-overlay>
   <div class="h-48 font-semibold flex justify-center items-center text-3xl">
     <h2>那些最愛</h2>
   </div>
@@ -93,18 +94,20 @@ const goProduct = (id) => {
 
 const myFavoriteStores = useMyFavoriteStores();
 const { getLocalStorage, addFavorite } = myFavoriteStores;
-const { favoriteItems } = storeToRefs(myFavoriteStores);
+const { favoriteItems, isLoading } = storeToRefs(myFavoriteStores);
 favoriteItems.value = getLocalStorage() || [];
 
 //獲取所有商品
 const products = ref([]);
 const getProducts = () => {
+  isLoading.value = true;
   const api = `${import.meta.env.VITE_API}api/${
     import.meta.env.VITE_PATH
   }/products/all`;
   axios.get(api).then((res) => {
     products.value = res.data.products;
     getFavoriteList();
+    isLoading.value = false;
   });
 };
 //獲取各筆最愛的產品
