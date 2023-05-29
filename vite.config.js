@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: 'LinXin0602',
+  base: 'new-viteProjcet',
   plugins: [vue()],
   css: {
     preprocessorOptions: {
