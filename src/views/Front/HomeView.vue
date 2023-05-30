@@ -4,7 +4,7 @@
     <img
       class="max-w-full w-full h-full object-cover block object-center"
       src="../../assets/img/封面.jpg"
-      alt=""
+      alt="封面"
     />
   </div>
   <div
@@ -22,7 +22,7 @@
     </div>
     <img
       src="../../assets/img/封面2.jpg"
-      alt=""
+      alt="主頁圖片"
       class="col-span-5 col-end-12 opacity-80"
     />
   </div>
@@ -31,7 +31,7 @@
   >
     <img
       src="../../assets/img/封面3.jpg"
-      alt=""
+      alt="主頁圖片"
       class="col-span-5 col-end-6 opacity-80"
     />
     <div class="my-5 col-span-4 col-end-12">
@@ -95,7 +95,7 @@
   <div class="flex flex-col h-96 w-2/3 mx-auto mt-10">
     <h3 class="text-3xl basis-1/5">來點Talk吧</h3>
     <p class="text-xl my-5 basis-1/5">
-      慶祝This.Ball即將邁入第五周年！！
+      慶祝This.BALL即將邁入第五周年！！
       不管是開心、難過、或是想跟我們說說話，都可以在下方留言，將會得到意外的小驚喜喔！！
     </p>
     <form
@@ -107,8 +107,6 @@
         v-model="userMessage"
         class="w-full textarea textarea-bordered"
         placeholder="來點Talk吧 , 來跟我們說說話"
-        name=""
-        id=""
         rows="5"
       ></textarea>
       <button class="btn">送出</button>
@@ -120,7 +118,7 @@
           您尚未給我們任何留言,無法獲得小驚喜喔!
         </h3>
         <h3 v-else class="font-bold text-lg">
-          慶祝This.Ball即將五周年,這裡附上折價券,於結帳頁面時可以使用！！ <br />
+          慶祝This.BALL即將五周年,這裡附上折價券,於結帳頁面時可以使用！！ <br />
           優惠碼:ThisBall 5th Anniversary
           <button @click="copyOrderid">
             <font-awesome-icon
@@ -132,7 +130,7 @@
         <div class="modal-action">
           <label
             @click="submitMessage(), (userMessage = '')"
-            for="my-modal  "
+            for="my-modal"
             class="btn"
             >確定!</label
           >
@@ -146,7 +144,6 @@
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.613088854264!2d120.29658977502949!3d22.630919079450255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e05ceea01149f%3A0xf451550e9f85d6db!2zVGhpc0JBTEzmiYvnh5LprIbppIXnkIPvvZzkuI3pmZDmmYLlkpbllaHlu7PvvZznqbrplpPnp5_lgJ8!5e0!3m2!1szh-TW!2stw!4v1685285101427!5m2!1szh-TW!2stw"
         height="350"
-        allowfullscreen=""
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         class="w-full lg:basis-1/3 flex-grow lg:mr-10"
@@ -158,7 +155,7 @@
         <tbody>
           <tr class="hover">
             <th>店名</th>
-            <td>手燒鬆餅球｜咖啡｜空間</td>
+            <td>This.BALL手燒鬆餅球｜咖啡｜空間</td>
           </tr>
           <tr class="hover">
             <th>地址</th>
