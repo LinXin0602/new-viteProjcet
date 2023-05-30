@@ -79,6 +79,7 @@
         <div>
           <label
             @click="toggleDropdown"
+            tabindex="0"
             class="btn btn-circle bg-transparent border-transparent"
           >
             <!-- hamburger icon -->
@@ -109,7 +110,11 @@
       </div>
 
       <div class="dropdown dropdown-end mx-5">
-        <label tabindex="0" class="btn btn-ghost btn-circle drawer-overlay">
+        <label
+          @click="showShopingCart = !showShopingCart"
+          tabindex="0"
+          class="btn btn-ghost btn-circle drawer-overlay"
+        >
           <div class="indicator">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -131,6 +136,7 @@
           </div>
         </label>
         <div
+          v-if="showShopingCart"
           tabindex="0"
           class="mt-3 card card-compact dropdown-content w-auto shadow"
         >
@@ -298,6 +304,7 @@ onMounted(() => {
     }
   });
 });
+const showShopingCart = ref(false);
 </script>
 
 <style>
