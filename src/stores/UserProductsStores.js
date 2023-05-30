@@ -97,8 +97,7 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
     if (item.qty > 0) {
       axios
         .put(api, { data: { product_id: item.id, qty: item.qty } })
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           isLoading.value = false;
           getShopingCart();
         });
@@ -106,8 +105,7 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
       item.qty = 1;
       axios
         .put(api, { data: { product_id: item.id, qty: item.qty } })
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           isLoading.value = false;
           getShopingCart();
         });

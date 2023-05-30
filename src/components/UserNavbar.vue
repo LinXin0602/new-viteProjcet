@@ -217,6 +217,7 @@
               <router-link
                 :to="{ name: 'checkout' }"
                 class="btn btn-primary btn-block text-xl"
+                @click="showShopingCart = !showShopingCart"
                 >前往結帳</router-link
               >
             </div>

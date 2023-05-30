@@ -14,8 +14,10 @@
       <li>結帳結束後現場會立即製作訂單，請您留意手機</li>
       <li>本訂單會現場製作，若有任何問題歡迎來電詢問</li>
       <li>訂單完成時將會與您聯絡，屆時請保持手機暢通</li>
-      <li>歡迎到本店內用，若您有空閒時間可以坐來下慢慢享用</li>
-      <button class="btn btn-wide btn-info mt-3">
+      <li>歡迎到本店內用，若有空閒時間可以坐來下慢慢享用</li>
+      <button
+        class="text-gray-500 text-xl bg-gray-200 p-3 rounded-md hover:shadow-md mt-5"
+      >
         <router-link :to="{ name: 'homeview' }">回到首頁</router-link>
       </button>
     </ul>
@@ -37,7 +39,7 @@
           <tbody>
             <tr class="hover">
               <th>店名</th>
-              <td>手燒鬆餅球｜咖啡｜空間</td>
+              <td>This.BALL手燒鬆餅球｜咖啡｜空間</td>
             </tr>
             <tr class="hover">
               <th>地址</th>
