@@ -114,10 +114,7 @@
     <input ref="modalRef" type="checkbox" id="my-modal" class="modal-toggle" />
     <div class="modal">
       <div class="modal-box">
-        <h3 v-if="userMessage === ''" class="font-bold text-lg">
-          您尚未給我們任何留言,無法獲得小驚喜喔!
-        </h3>
-        <h3 v-else class="font-bold text-lg">
+        <h3 v-if="userMessage !== ''" class="font-bold text-lg">
           慶祝This.BALL即將五周年,這裡附上折價券,於結帳頁面時可以使用！！ <br />
           優惠碼:ThisBall 5th Anniversary
           <button @click="copyOrderid">
@@ -127,13 +124,13 @@
             />
           </button>
         </h3>
+        <h3 v-else class="font-bold text-lg">
+          您尚未給我們任何留言,無法獲得小驚喜喔!
+        </h3>
         <div class="modal-action">
-          <label
-            @click="submitMessage(), (userMessage = '')"
-            for="my-modal"
-            class="btn"
-            >確定!</label
-          >
+          <button @click="submitMessage(), (userMessage = '')" class="btn">
+            確定!
+          </button>
         </div>
       </div>
     </div>
