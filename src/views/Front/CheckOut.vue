@@ -113,7 +113,7 @@
     </div>
 
     <div
-      class="mt-10 mx-3 lg:mt-0 col-span-1 lg:col-span-4 bg-gray-50 p-6 rounded-lg"
+      class="mt-10 md:mx-3 lg:mt-0 col-span-1 lg:col-span-4 bg-gray-50 p-6 rounded-lg"
     >
       <div class="mt-4 flex justify-center text-3xl">
         <h2>填寫購物資訊</h2>

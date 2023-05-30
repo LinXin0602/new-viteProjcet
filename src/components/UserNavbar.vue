@@ -363,5 +363,6 @@ input[type='number']::-webkit-inner-spin-button {
 }
 .toTop-removed {
   transition: all 0.4s ease-in-out;
+  z-index: 100;
 }
 </style>
