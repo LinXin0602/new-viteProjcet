@@ -19,19 +19,21 @@
         <router-link :to="{ name: 'homeview' }">回到首頁</router-link>
       </button>
     </ul>
-    <div class="p-8 bg-gray-50 mt-10 flex flex-col">
-      <h2 class="text-3xl md:mx-6 m-10 text-center">我們在這</h2>
-      <div class="w-4/5 mx-auto flex flex-wrap">
+    <div class="p-4 bg-gray-50 mt-10 flex flex-col">
+      <h2 class="text-3xl md:mx-6 m-6">我們在這</h2>
+      <div class="md:w-4/5 w-5/6 mx-auto flex flex-wrap">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.613088854264!2d120.29658977502949!3d22.630919079450255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e05ceea01149f%3A0xf451550e9f85d6db!2zVGhpc0JBTEzmiYvnh5LprIbppIXnkIPvvZzkuI3pmZDmmYLlkpbllaHlu7PvvZznqbrplpPnp5_lgJ8!5e0!3m2!1szh-TW!2stw!4v1685285101427!5m2!1szh-TW!2stw"
-          height="450"
+          height="350"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          class="w-full lg:basis-1/3 flex-grow mr-10"
+          class="w-full lg:basis-1/3 flex-grow lg:mr-10"
         ></iframe>
 
-        <table class="table w-full lg:basis-1/3 flex-grow mt-6 lg:mt-0">
+        <table
+          class="table table-compact sm:table md:p-4 w-full lg:basis-1/3 flex-grow mt-6 lg:mt-0"
+        >
           <tbody>
             <tr class="hover">
               <th>店名</th>
