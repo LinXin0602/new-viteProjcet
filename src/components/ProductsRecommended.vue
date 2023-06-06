@@ -1,52 +1,51 @@
 <template lang="">
   <div
-    class="mt-16 h-[60vh] bg-gray-50 p-5 px-10 lg:px-16 flex flex-col justify-around"
+    class="mt-16 h-[28rem] bg-gray-50 px-10 lg:px-16 flex flex-col justify-around"
   >
     <h3 class="text-3xl md:mx-6 m-6">你可能也會喜歡</h3>
     <Swiper
-      class="h-72 w-full"
+      class="w-full h-full"
       :modules="modules"
       :slides-per-view="1"
       :breakpoints="{
-        560: {
+        500: {
           slidesPerView: 2,
-          spaceBetween: 80,
+          spaceBetween: 20,
         },
-        768: {
+        800: {
           slidesPerView: 3,
-          spaceBetween: 60,
+          spaceBetween: 30,
         },
         1024: {
           slidesPerView: 4,
-          spaceBetween: 60,
+          spaceBetween: 30,
         },
       }"
       :pagination="{ clickable: true }"
       :autoplay="{ delay: 3000, disableOnInteraction: false }"
     >
-      <swiper-slide v-for="item in productsShow" :key="item.id">
+      <swiper-slide v-for="item in productsShow" :key="item.id" class="">
         <a
           @click="goProduct(item.id)"
           :key="item.id"
-          class="group hover:scale-105 duration-200 cursor-pointer"
+          class="group duration-200 cursor-pointer"
         >
           <div
-            class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 relative"
+            class="overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
           >
             <img
               :src="item.imageUrl"
               :alt="item.imageAlt"
-              class="h-full w-full object-cover object-center group-hover:opacity-75 cursor-pointer"
+              class="object-cover object-center group-hover:opacity-75 cursor-pointer"
             />
           </div>
           <h3 class="mt-4 mx-2 text-2xl text-gray-700">
             {{ item.title }}
           </h3>
-          <div class="flex justify-between">
-            <p class="my-1 text-lg font-medium text-gray-900 mx-2">
-              NT${{ item.price }}
-            </p>
-          </div>
+
+          <p class="my-0.5 text-lg font-medium text-gray-900 mx-2">
+            NT${{ item.price }}
+          </p>
         </a>
       </swiper-slide>
     </Swiper>
@@ -101,4 +100,22 @@ watch(products, () => {
   randomHandle();
 });
 </script>
-<style lang=""></style>
+<style lang="css">
+.swiper-pagination {
+  bottom: -6px;
+}
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 6px;
+  color: #150101;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.2);
+}
+.swiper-pagination-bullet-active {
+  color: #fff;
+  background: #5878c9;
+}
+</style>

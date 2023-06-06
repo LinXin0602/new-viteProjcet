@@ -6,11 +6,15 @@
       src="../../assets/img/封面.jpg"
       alt="封面"
     />
+    <div class="relative mx-auto w-full my-8">
+      <div @click="toDown" class="arrow cursor-pointer"></div>
+    </div>
   </div>
+
   <div
     class="container h-auto mt-16 mx-auto w-2/3 items-center md:grid md:grid-cols-11"
   >
-    <div class="my-5 col-span-4 col-end-5">
+    <div class="my-5 col-span-4 col-end-5" id="icon">
       <h2 class="text-2xl">This BALL.Afternoon</h2>
       <div class="divider my-5"></div>
       <p class="text-center text-lg">
@@ -202,6 +206,12 @@ const submitMessage = () => {
   const value = modalRef.value;
   value.checked = !value.checked;
 };
+const toDown = () => {
+  window.scrollTo({
+    top: 480,
+    behavior: 'smooth',
+  });
+};
 //複製訊息
 const copyOrderid = () => {
   toast.info(`已複製優惠碼 ThisBall 5th Anniversary`);
@@ -218,6 +228,49 @@ div {
     p {
       display: none;
     }
+  }
+}
+.arrow.arrow::before {
+  position: absolute;
+  left: 50%;
+}
+
+.arrow {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: -20px 0 0 -20px;
+  transform: rotate(45deg);
+  border-left: none;
+  border-top: none;
+  border-right: 2px black solid;
+  border-bottom: 2px black solid;
+}
+.arrow::before {
+  position: absolute;
+  content: '';
+  width: 15px;
+  height: 15px;
+  top: 50%;
+  margin: -10px 0 0 -10px;
+  border-right: 1px black solid;
+  border-bottom: 1px black solid;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: arrow;
+}
+@keyframes arrow {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-10px, -10px);
   }
 }
 </style>

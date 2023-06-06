@@ -45,8 +45,9 @@
             class="h-72 fixed w-2/5 sm:w-2/6 right-10 top-20 bg-gray-100 rounded-b-xl duration-200 menu"
           >
             <ul class="flex h-full flex-col justify-around text-lg">
-              <li class="">
+              <li>
                 <router-link
+                  @click="showDropdown = false"
                   :to="{ name: 'aboutview' }"
                   class="underline-transition mx-5 font-mono font-bold hover:scale-105 duration-300"
                   ><div>我們的那些</div>
@@ -54,6 +55,7 @@
               </li>
               <li>
                 <router-link
+                  @click="showDropdown = false"
                   :to="{ name: 'articlelistview' }"
                   class="underline-transition mx-5 font-mono font-bold hover:scale-105 duration-300"
                   >關於那些事</router-link
@@ -61,6 +63,7 @@
               </li>
               <li>
                 <router-link
+                  @click="showDropdown = false"
                   :to="{ name: 'favoriteview' }"
                   class="underline-transition mx-5 font-mono font-bold hover:scale-105 duration-300"
                   >那些最愛</router-link
@@ -68,6 +71,7 @@
               </li>
               <li>
                 <router-link
+                  @click="showDropdown = false"
                   :to="{ name: 'productlist' }"
                   class="underline-transition mx-5 font-mono font-bold hover:scale-105 duration-300"
                   >那些食物</router-link
