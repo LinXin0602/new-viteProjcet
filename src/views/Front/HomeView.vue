@@ -207,8 +207,14 @@ const submitMessage = () => {
   value.checked = !value.checked;
 };
 const toDown = () => {
+  let windowHeight;
+  if (window.innerWidth > 768) {
+    windowHeight = window.innerHeight * 0.7;
+  } else {
+    windowHeight = window.innerHeight * 0.5;
+  }
   window.scrollTo({
-    top: 480,
+    top: windowHeight,
     behavior: 'smooth',
   });
 };

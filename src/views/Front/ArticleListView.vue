@@ -7,14 +7,14 @@
     data-aos="fade-right"
     data-aos-offset="100"
     data-aos-easing="ease-in-sine"
-    class="mx-auto w-3/5 justify-center md:w-4/5 lg:w-3/5"
+    class="mx-auto justify-center w-4/5 lg:w-3/5"
     v-for="item in UserArticleList"
     :key="item.id"
   >
     <div class="card md:card-side bg-gray-100 shadow-xl md:h-72 md:flex-row">
       <img
         @click="goArticle(item.id)"
-        class="h-[60vh] md:h-full md:w-2/6 max-w-full object-cover object-center cursor-pointer md:basis-1/3"
+        class="h-[55vh] md:h-full md:w-2/6 max-w-full object-cover object-center cursor-pointer md:basis-1/3"
         :src="item.image"
         :alt="item.image"
       />
