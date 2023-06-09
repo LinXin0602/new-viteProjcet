@@ -49,12 +49,12 @@
           <font-awesome-icon
             v-if="favoriteItems.includes(product.id)"
             @click="addFavorite(product)"
-            class="text-3xl text-red-400"
+            class="text-3xl text-red-400 hover:scale-125 duration-200"
             :icon="['fass', 'heart']"
           /><font-awesome-icon
             v-else
             @click="addFavorite(product)"
-            class="text-3xl text-gray-400"
+            class="text-3xl text-gray-400 hover:scale-125 duration-200"
             :icon="['far', 'heart']"
           />
         </button>

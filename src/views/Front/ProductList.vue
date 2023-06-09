@@ -5,7 +5,7 @@
       <ul>
         <li
           :class="{ 'tab-bordered tab-active ': productStyle === '' }"
-          class="px-5 tab hover:tab-bordere"
+          class="px-5 tab hover:tab-bordered"
           @click="(productStyle = ''), getProducts()"
         >
           全部商品
