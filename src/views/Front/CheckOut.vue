@@ -154,7 +154,7 @@
             class="block input input-md my-3 w-full"
             type="text"
             id="phone"
-            rules="required"
+            :rules="phoneCheck"
           /><ErrorMessage name="Phone" class="text-red-500"></ErrorMessage>
         </div>
         <div class="my-3">
@@ -233,5 +233,10 @@ getShopingCart();
 const discount = computed(() => {
   return (1 - shopingCart.value.final_total / shopingCart.value.total) * 100;
 });
+//電話表單驗證
+const phoneCheck = (value) => {
+  const phoneNumber = /^(09)[0-9]{8}$/;
+  return phoneNumber.test(value) ? true : '請輸入正確電話號碼';
+};
 </script>
 <style lang=""></style>
