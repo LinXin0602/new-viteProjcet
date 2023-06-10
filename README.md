@@ -26,3 +26,6 @@ This template should help get you started developing with Vue 3 in Vite.
 9.串接後端：除了使用者方面的前台網站，也設置了後台讓業者能增、刪、改、查產品資訊，貼文，優惠券，訂單等資訊，可以立即為網站管理所有內容。
 
 此外，該網站使用了 Vue Router 實現頁面路由，讓使用者能夠方便地切換不同的功能頁面。Pinia 提供了狀態管理的能力，使數據的管理和共享更加方便。Tailwind CSS 提供了現代且可自訂的外觀設計，讓網站具有美觀且一致的風格。Swiper 則用於實現產品輪播效果，增加了網站的互動性和吸引力。
+
+
+DEMO：　https://linxin0602.github.io/new-viteProjcet/#/
