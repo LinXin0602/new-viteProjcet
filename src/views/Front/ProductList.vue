@@ -114,7 +114,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useUserProductsStores } from '../../stores/UserProductsStores.js';
 import { useMyFavoriteStores } from '@/stores/MyFavoriteStores';
@@ -134,15 +134,15 @@ const goProduct = (id) => {
 //搜尋商品
 const searchProduct = ref('');
 const searchItem = () => {
-  if (searchProduct.value === '') {
-    getProducts();
-  } else {
-    filteredProducts.value = filteredProducts.value.filter((item) => {
-      return item.title.indexOf(searchProduct.value) !== -1;
-    });
-  }
+  filteredProducts.value = filteredProducts.value.filter((item) => {
+    return item.title.indexOf(searchProduct.value) !== -1;
+  });
 };
-
+watch(searchProduct, (newValue) => {
+  if (newValue === '') {
+    getProducts();
+  }
+});
 const myFavoriteStores = useMyFavoriteStores();
 const { addFavorite, getLocalStorage } = myFavoriteStores;
 const { favoriteItems } = storeToRefs(myFavoriteStores);
