@@ -5,10 +5,7 @@ import vue from '@vitejs/plugin-vue';
 // https://vitejs.dev/config/
 /* global process */
 export default defineConfig({
-  base:
-    process.env.NODE_ENV === 'production'
-      ? '/production-sub-path/'
-      : '/new-viteProjcet/',
+  base: 'new-viteProject',
   plugins: [vue()],
   css: {
     preprocessorOptions: {
