@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <div class="lg:h-52 mt-20 h-24 md:h-36 flex justify-center items-center">
     <ul class="steps">
       <li class="step step-primary">填寫訂單</li>
@@ -31,7 +31,7 @@
               <img
                 class="h-10 sm:h-20 lg:h-28 image-full"
                 :src="item.product?.imageUrl"
-                alt=""
+                :alt="item.product?.title"
               />
               <div class="flex flex-col">
                 <h5>{{ item.product?.title }} x {{ item.qty }}</h5>
@@ -52,7 +52,7 @@
             <td>
               <div class="flex justify-between text-xs md:text-lg">
                 <p>{{ singleOrder.id }}</p>
-                <button @click="copyOrderid">
+                <button type="button" @click="copyOrderId">
                   <font-awesome-icon
                     icon="fa-solid fa-copy"
                     class="ml-3 hover:text-gray-400 text-gray-600 text-xl"
@@ -96,7 +96,11 @@
         </tbody>
       </table>
       <div class="flex mt-4 justify-end">
-        <button class="btn text-lg" @click="paying(singleOrder.id)">
+        <button
+          type="button"
+          class="btn text-lg"
+          @click="paying(singleOrder.id)"
+        >
           確定付款
         </button>
       </div>
@@ -105,23 +109,24 @@
 </template>
 
 <script setup>
-import { changeDate } from '../../composables/useDateChange';
+import { changeDate } from '@/composables/useDateChange';
 import { storeToRefs } from 'pinia';
-import { useUserProductsStores } from '../../stores/UserProductsStores';
+import { useUserProductsStores } from '@/stores/UserProductsStores';
 import { useRoute } from 'vue-router';
 import { useToast } from 'vue-toastification';
 const toast = useToast();
 const route = useRoute();
 const orderId = route.params.id;
-const userProductsStroes = useUserProductsStores();
-const { singleOrder } = storeToRefs(userProductsStroes);
-const { getOrder, paying } = userProductsStroes;
+const userProductsStores = useUserProductsStores();
+const { singleOrder } = storeToRefs(userProductsStores);
+const { getOrder, paying } = userProductsStores;
 const { TimeDate } = changeDate();
 //複製文字
-const copyOrderid = () => {
+const copyOrderId = () => {
   toast.info(`已複製訂單 ${singleOrder.value.id} `);
   navigator.clipboard.writeText(singleOrder.value.id);
 };
 getOrder(orderId);
 </script>
-<style lang=""></style>
+
+<style></style>
