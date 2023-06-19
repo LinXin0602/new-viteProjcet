@@ -113,7 +113,7 @@
         placeholder="來點Talk吧 , 來跟我們說說話"
         rows="5"
       ></textarea>
-      <button type="button" class="btn">送出</button>
+      <button class="btn">送出</button>
     </form>
     <input ref="modalRef" type="checkbox" id="my-modal" class="modal-toggle" />
     <div class="modal">
@@ -157,23 +157,23 @@
         class="table table-compact sm:table md:p-4 w-full lg:basis-1/3 flex-grow mt-6 lg:mt-0"
       >
         <tbody>
-          <tr class="hover">
+          <tr>
             <th>店名</th>
             <td>This.BALL手燒鬆餅球｜咖啡｜空間</td>
           </tr>
-          <tr class="hover">
+          <tr>
             <th>地址</th>
             <td>高雄市新興區自立二路72號</td>
           </tr>
-          <tr class="hover">
+          <tr>
             <th>電話</th>
             <td>07-2851500</td>
           </tr>
-          <tr class="hover">
+          <tr>
             <th>營業時間</th>
             <td>11:00-19:00 無公休</td>
           </tr>
-          <tr class="hover">
+          <tr>
             <th>服務內容</th>
             <td>內用 · 外帶 · 外送．Talk</td>
           </tr>

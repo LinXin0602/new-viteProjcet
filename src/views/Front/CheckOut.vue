@@ -96,7 +96,7 @@
             placeholder="請輸入優惠碼"
             type="text"
           />
-          <button type="button" class="mx-1 btn btn-sm align-top">套用</button>
+          <button class="mx-1 btn btn-sm align-top">套用</button>
         </form>
         <div
           v-if="shoppingCart.final_total === shoppingCart.total"
@@ -196,7 +196,7 @@
           ></textarea>
         </div>
         <div>
-          <button type="button" class="mt-3 btn w-full">前往結帳</button>
+          <button class="mt-3 btn w-full">前往結帳</button>
         </div>
       </Form>
     </div>
