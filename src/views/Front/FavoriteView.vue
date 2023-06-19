@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <loading-overlay :active="isLoading"> </loading-overlay>
   <div class="h-48 font-semibold flex justify-center items-center text-3xl">
     <h2>那些最愛</h2>
@@ -12,7 +12,7 @@
     <h2 class="text-3xl">
       這麼多好吃的竟然沒有最愛，那你一定還沒逛我們的商品！！
     </h2>
-    <button class="btn bg-gray-300 rounded-md text-2xl mt-10">
+    <button type="button" class="btn bg-gray-300 rounded-md text-2xl mt-10">
       <router-link :to="{ name: 'productlist' }">趕快去看看</router-link>
     </button>
   </div>
@@ -42,7 +42,7 @@
           <p class="my-1 text-lg font-medium text-gray-900 mx-2">
             NT${{ item.price }}
           </p>
-          <button>
+          <button type="button">
             <font-awesome-icon
               v-if="favoriteItems.includes(item.id)"
               @click.stop="addFavorite(item), getFavoriteList()"
@@ -56,16 +56,21 @@
             />
           </button>
         </div>
-
         <div class="mt-3">
           <button
+            type="button"
             v-if="status.loadingItem === item.id"
             :disabled="status.loadingItem === item.id"
             class="btn w-full loading"
           >
             加入購物車
           </button>
-          <button v-else class="btn w-full" @click.stop="addShopingCart(item)">
+          <button
+            type="button"
+            v-else
+            class="btn w-full"
+            @click.stop="addShoppingCart(item)"
+          >
             加入購物車
           </button>
         </div>
@@ -73,18 +78,18 @@
     </div>
   </div>
 </template>
+
 <script setup>
 import axios from 'axios';
 import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useMyFavoriteStores } from '@/stores/MyFavoriteStores';
-// import axios from 'axios';
-import { useUserProductsStores } from '../../stores/UserProductsStores.js';
+import { useUserProductsStores } from '@/stores/UserProductsStores.js';
 import { useRouter } from 'vue-router';
 
-const userProductsStroes = useUserProductsStores();
-const { addShopingCart } = userProductsStroes;
-const { status, product } = storeToRefs(userProductsStroes);
+const userProductsStores = useUserProductsStores();
+const { addShoppingCart } = userProductsStores;
+const { status, product } = storeToRefs(userProductsStores);
 
 const router = useRouter();
 const goProduct = (id) => {
@@ -124,4 +129,5 @@ const getFavoriteList = () => {
 
 getProducts();
 </script>
-<style lang=""></style>
+
+<style></style>

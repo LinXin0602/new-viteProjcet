@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <div class="h-48 font-semibold flex justify-center items-center text-3xl">
     <h2>關於那些事</h2>
   </div>
@@ -25,28 +25,31 @@
         </p>
         <div class="card-actions justify-end">
           <p>{{ DayDate(item.create_at) }}</p>
-          <button @click="goArticle(item.id)" class="btn">查看更多</button>
+          <button type="button" @click="goArticle(item.id)" class="btn">
+            查看更多
+          </button>
         </div>
       </div>
     </div>
     <div class="divider my-20"></div>
   </div>
 </template>
+
 <script setup>
 import { storeToRefs } from 'pinia';
-import { useArticleStores } from '../../stores/ArticleStores';
+import { useArticleStores } from '@/stores/ArticleStores';
 import { useRouter } from 'vue-router';
-import { changeDate } from '../../composables/useDateChange';
+import { changeDate } from '@/composables/useDateChange';
 const ArticleStores = useArticleStores();
 const { getUserArticleList } = ArticleStores;
 const { UserArticleList, userTempArticle } = storeToRefs(ArticleStores);
 getUserArticleList();
 const { DayDate } = changeDate();
-
 const router = useRouter();
 const goArticle = (id) => {
   userTempArticle.value = {};
   router.push({ name: 'articleview', params: { id: id } });
 };
 </script>
-<style lang=""></style>
+
+<style></style>

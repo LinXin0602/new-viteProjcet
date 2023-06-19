@@ -2,8 +2,8 @@ import { defineStore } from 'pinia';
 import axios from 'axios';
 import { ref } from 'vue';
 
-import { toastMessage } from '../composables/useToastMessage.js';
-export const useProductsStroes = defineStore('productsStroes', () => {
+import { toastMessage } from '@/composables/useToastMessage.js';
+export const useProductsStores = defineStore('productsStores', () => {
   const products = ref({}); //產品資訊
   const tempProduct = ref({}); //單筆產品資訊
   const isLoading = ref(false); //讀取動畫
@@ -17,7 +17,6 @@ export const useProductsStroes = defineStore('productsStroes', () => {
       import.meta.env.VITE_PATH
     }/admin/products?page=${page}`;
     axios.get(api).then((res) => {
-      // console.log(res);
       products.value = res.data.products;
       pagination.value = res.data.pagination;
       isLoading.value = false;
@@ -33,7 +32,6 @@ export const useProductsStroes = defineStore('productsStroes', () => {
         import.meta.env.VITE_PATH
       }/admin/product/${tempProduct.value.id}`;
       axios.put(api, { data: tempProduct.value }).then((res) => {
-        console.log(tempProduct.value);
         toastMessage(res, `產品【${tempProduct.value.title}】更新成功`, '');
         tempProduct.value = {};
         getProduct();
@@ -53,7 +51,6 @@ export const useProductsStroes = defineStore('productsStroes', () => {
     }/admin/product/${tempProduct.value.id}`;
 
     axios.delete(api).then((res) => {
-      console.log(res);
       toastMessage(res, `產品【${tempProduct.value.title}】刪除`, '完成');
       tempProduct.value = {};
       getProduct();

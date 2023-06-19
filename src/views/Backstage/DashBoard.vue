@@ -1,7 +1,8 @@
-<template lang="">
+<template>
   <ManagerNavbar class="mb-3" />
   <router-view></router-view>
 </template>
+
 <script setup>
 import axios from 'axios';
 
@@ -23,4 +24,5 @@ axios.post(api).then((res) => {
   }
 });
 </script>
-<style lang=""></style>
+
+<style></style>

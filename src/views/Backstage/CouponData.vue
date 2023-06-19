@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <loading-overlay :active="isLoading">
     <div class="loadingio-spinner-ball-l30nz6iyhu9">
       <div class="ldio-hnk0xi4nyc8">
@@ -58,6 +58,7 @@
   <CouponModal />
   <DeleteModal />
 </template>
+
 <script setup>
 import DeleteModal from '@/components/DeleteModal.vue';
 import CouponModal from '@/components/CouponModal.vue';
@@ -70,4 +71,5 @@ const { getCoupons, getItem } = couponStores;
 const { coupons, isAdd, isLoading } = storeToRefs(couponStores);
 getCoupons();
 </script>
-<style lang=""></style>
+
+<style></style>

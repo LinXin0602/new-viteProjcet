@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <!-- Put this part before </body> tag -->
   <input type="checkbox" id="order-modal" class="modal-toggle" />
   <div class="modal">
@@ -78,12 +78,14 @@
     </div>
   </div>
 </template>
+
 <script setup>
-import { changeDate } from '../composables/useDateChange';
+import { changeDate } from '@/composables/useDateChange';
 import { storeToRefs } from 'pinia';
 import { useOrderStores } from '@/stores/OrderStores';
 const { TimeDate } = changeDate();
 const orderStores = useOrderStores();
 const { tempOrder } = storeToRefs(orderStores);
 </script>
-<style lang=""></style>
+
+<style></style>

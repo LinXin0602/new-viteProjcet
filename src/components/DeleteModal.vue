@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <input type="checkbox" id="deleteModal" class="modal-toggle" />
   <div class="modal">
     <div class="modal-box">
@@ -66,27 +66,29 @@
     </div>
   </div>
 </template>
+
 <script setup>
 import { storeToRefs } from 'pinia';
 //產品頁面
-import { useProductsStroes } from '@/stores/ProductsStores.js';
-const productsStroe = useProductsStroes();
-const { tempProduct } = storeToRefs(productsStroe);
-const { dealeteItem } = productsStroe;
+import { useProductsStores } from '@/stores/ProductsStores.js';
+const productsStores = useProductsStores();
+const { tempProduct } = storeToRefs(productsStores);
+const { dealeteItem } = productsStores;
 //優惠券頁面
 import { useCouponStores } from '@/stores/CouponStores';
-const couponStroe = useCouponStores();
-const { tempCoupon } = storeToRefs(couponStroe);
-const { dealeteCoupon } = couponStroe;
+const couponStores = useCouponStores();
+const { tempCoupon } = storeToRefs(couponStores);
+const { dealeteCoupon } = couponStores;
 //訂單頁面
 import { useOrderStores } from '@/stores/OrderStores';
 const orderStores = useOrderStores();
 const { tempOrder } = storeToRefs(orderStores);
 const { deleteOrder } = orderStores;
 //文章頁面
-import { useArticleStores } from '../stores/ArticleStores';
+import { useArticleStores } from '@/stores/ArticleStores';
 const ArticleStores = useArticleStores();
 const { tempArticle } = storeToRefs(ArticleStores);
 const { deleteArticle } = ArticleStores;
 </script>
-<style lang=""></style>
+
+<style></style>

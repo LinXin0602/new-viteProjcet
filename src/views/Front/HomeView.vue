@@ -3,7 +3,7 @@
     <div class="w-full absolute h-full bg-transparent/10"></div>
     <img
       class="max-w-full w-full h-full object-cover block object-center"
-      src="../../assets/img/封面.jpg"
+      src="@/assets/img/封面.jpg"
       alt="封面"
     />
     <div class="relative mx-auto w-full my-8">
@@ -25,7 +25,7 @@
       </p>
     </div>
     <img
-      src="../../assets/img/封面2.jpg"
+      src="@/assets/img/封面2.jpg"
       alt="主頁圖片"
       class="col-span-5 col-end-12 opacity-80"
     />
@@ -34,7 +34,7 @@
     class="container h-auto lg:-translate-y-6 mx-auto mb-16 w-2/3 items-center md:grid md:grid-cols-11 flex flex-col-reverse"
   >
     <img
-      src="../../assets/img/封面3.jpg"
+      src="@/assets/img/封面3.jpg"
       alt="主頁圖片"
       class="col-span-5 col-end-6 opacity-80"
     />
@@ -113,7 +113,7 @@
         placeholder="來點Talk吧 , 來跟我們說說話"
         rows="5"
       ></textarea>
-      <button class="btn">送出</button>
+      <button type="button" class="btn">送出</button>
     </form>
     <input ref="modalRef" type="checkbox" id="my-modal" class="modal-toggle" />
     <div class="modal">
@@ -121,7 +121,7 @@
         <h3 v-if="userMessage !== ''" class="font-bold text-lg">
           慶祝This.BALL即將五周年,這裡附上折價券,於結帳頁面時可以使用！！ <br />
           優惠碼:ThisBall 5th Anniversary
-          <button @click="copyOrderid">
+          <button type="button" @click="copyOrderid">
             <font-awesome-icon
               icon="fa-solid fa-copy"
               class="ml-3 hover:text-gray-400 text-gray-600 text-xl"
@@ -132,7 +132,11 @@
           您尚未給我們任何留言,無法獲得小驚喜喔!
         </h3>
         <div class="modal-action">
-          <button @click="submitMessage(), (userMessage = '')" class="btn">
+          <button
+            type="button"
+            @click="submitMessage(), (userMessage = '')"
+            class="btn"
+          >
             確定!
           </button>
         </div>
@@ -149,7 +153,6 @@
         referrerpolicy="no-referrer-when-downgrade"
         class="w-full lg:basis-1/3 flex-grow lg:mr-10"
       ></iframe>
-
       <table
         class="table table-compact sm:table md:p-4 w-full lg:basis-1/3 flex-grow mt-6 lg:mt-0"
       >
@@ -179,9 +182,10 @@
     </div>
   </div>
 </template>
+
 <script setup>
 import { useToast } from 'vue-toastification';
-import { changeDate } from '../../composables/useDateChange';
+import { changeDate } from '@/composables/useDateChange';
 //輪播components引入
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Autoplay } from 'swiper';
@@ -189,7 +193,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 
-import { useArticleStores } from '../../stores/ArticleStores';
+import { useArticleStores } from '@/stores/ArticleStores';
 import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
 const ArticleStores = useArticleStores();

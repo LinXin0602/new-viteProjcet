@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <div
     class="mt-16 h-[28rem] bg-gray-50 px-10 lg:px-16 flex flex-col justify-around"
   >
@@ -25,7 +25,8 @@
       :autoplay="{ delay: 3000, disableOnInteraction: false }"
     >
       <swiper-slide v-for="item in productsShow" :key="item.id" class="">
-        <a
+        <button
+          type="button"
           @click="goProduct(item.id)"
           :key="item.id"
           class="group duration-200 cursor-pointer"
@@ -46,11 +47,12 @@
           <p class="my-0.5 text-lg font-medium text-gray-900 mx-2">
             NT${{ item.price }}
           </p>
-        </a>
+        </button>
       </swiper-slide>
     </Swiper>
   </div>
 </template>
+
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Autoplay } from 'swiper';
@@ -75,9 +77,9 @@ const goProduct = (id) => {
   randomHandle();
 };
 
-const userProductsStroes = useUserProductsStores();
-const { products, product } = storeToRefs(userProductsStroes);
-const { getProducts, getProduct } = userProductsStroes;
+const userProductsStores = useUserProductsStores();
+const { products, product } = storeToRefs(userProductsStores);
+const { getProducts, getProduct } = userProductsStores;
 
 //先獲取總商品列表，再隨機push8樣不同的商品
 getProducts();
@@ -100,6 +102,7 @@ watch(products, () => {
   randomHandle();
 });
 </script>
+
 <style lang="css">
 .swiper-pagination {
   bottom: -6px;

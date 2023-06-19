@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <loading-overlay :active="isLoading"></loading-overlay>
   <div class="h-48 font-semibold flex justify-center items-center text-3xl">
     <h2
@@ -34,7 +34,11 @@
       >
         {{ DayDate(userTempArticle.create_at) }}
       </p>
-      <img :src="userTempArticle.image" alt="" class="w-full mx-auto" />
+      <img
+        :src="userTempArticle.image"
+        :alt="userTempArticle.title"
+        class="w-full mx-auto"
+      />
       <div class="divider"></div>
       <p class="whitespace-pre-line overflow-hidden text-center bg-gray-50 p-4">
         {{ userTempArticle.content }}
@@ -42,11 +46,12 @@
     </div>
   </div>
 </template>
+
 <script setup>
 import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useArticleStores } from '../../stores/ArticleStores';
-import { changeDate } from '../../composables/useDateChange';
+import { useArticleStores } from '@/stores/ArticleStores';
+import { changeDate } from '@/composables/useDateChange';
 const { DayDate } = changeDate();
 const ArticleStores = useArticleStores();
 const { userTempArticle, isLoading } = storeToRefs(ArticleStores);
@@ -55,4 +60,5 @@ const route = useRoute();
 const articleId = route.params.id;
 getUserArticle(articleId);
 </script>
-<style lang=""></style>
+
+<style></style>

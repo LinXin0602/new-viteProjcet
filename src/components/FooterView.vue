@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <footer
     class="footer footer-center p-5 mt-8 bg-gray-200 text-base-content rounded gap-5"
   >
@@ -24,5 +24,7 @@
     </div>
   </footer>
 </template>
+
 <script setup></script>
-<style lang=""></style>
+
+<style></style>

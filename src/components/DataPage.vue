@@ -1,6 +1,8 @@
-<template lang="">
+<template>
   <div class="btn-group flex justify-center my-2">
-    <button class="btn btn-sm btn-outline" @click="prePage">«</button>
+    <button type="button" class="btn btn-sm btn-outline" @click="prePage">
+      «
+    </button>
     <ul
       v-for="page in pagination.total_pages"
       :key="page"
@@ -10,17 +12,19 @@
         {{ page }}
       </li>
     </ul>
-
-    <button @click="nextPage" class="btn btn-sm btn-outline">»</button>
+    <button type="button" @click="nextPage" class="btn btn-sm btn-outline">
+      »
+    </button>
   </div>
 </template>
+
 <script setup>
 //從ProductsStores獲取 product data & methodes
 import { storeToRefs } from 'pinia';
-import { useProductsStroes } from '@/stores/ProductsStores.js';
-const productsStroe = useProductsStroes();
-const { pagination } = storeToRefs(productsStroe);
-const { getProduct } = productsStroe;
+import { useProductsStores } from '@/stores/ProductsStores.js';
+const productsStores = useProductsStores();
+const { pagination } = storeToRefs(productsStores);
+const { getProduct } = productsStores;
 //下一頁methods
 const nextPage = () => {
   if (pagination.value.has_next) {
@@ -36,4 +40,5 @@ const prePage = () => {
   }
 };
 </script>
-<style lang=""></style>
+
+<style></style>

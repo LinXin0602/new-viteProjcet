@@ -1,9 +1,12 @@
-<template lang="">
+<template>
   <loading-overlay :active="isLoading"></loading-overlay>
   <div ref="navbarRef" class="w-full fixed top-0 z-50 h-20 navbar rounded-b-xl">
     <div class="flex-1 mx-5">
       <router-link :to="{ name: 'homeview' }">
-        <img class="h-12" src="../assets/thisballLogo_preview_rev_1.png" alt=""
+        <img
+          class="h-12"
+          src="@/assets/thisballLogo_preview_rev_1.png"
+          alt="Logo"
       /></router-link>
     </div>
     <div>
@@ -115,7 +118,7 @@
 
       <div class="dropdown dropdown-end mx-5">
         <label
-          @click="showShopingCart = !showShopingCart"
+          @click="showShoppingCart = !showShoppingCart"
           tabindex="0"
           class="btn btn-ghost btn-circle drawer-overlay"
         >
@@ -134,18 +137,19 @@
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
               />
             </svg>
-            <span class="badge badge-sm indicator-item translate-x-5">{{
-              shopingCart.carts?.length
-            }}</span>
+            <span
+              class="badge badge-sm indicator-item translate-x-4 bg-transparent border-transparent"
+              >{{ shoppingCart.carts?.length }}</span
+            >
           </div>
         </label>
         <div
-          v-if="showShopingCart"
+          v-if="showShoppingCart"
           tabindex="0"
           class="mt-3 card card-compact dropdown-content w-auto shadow"
         >
           <div
-            v-if="shopingCart.carts?.length > 0"
+            v-if="shoppingCart.carts?.length > 0"
             class="card-body bg-slate-50 w-80 md:w-full"
           >
             <div class="overflow-x-auto max-h-96">
@@ -162,9 +166,10 @@
                 </thead>
                 <tbody>
                   <!-- row 1 -->
-                  <tr v-for="item in shopingCart.carts" :key="item.id">
+                  <tr v-for="item in shoppingCart.carts" :key="item.id">
                     <th>
                       <button
+                        type="button"
                         @click="deleteCart(item.id)"
                         class="btn btn-square btn-outline btn-xs"
                       >
@@ -188,7 +193,8 @@
                     <td>
                       <div class="">
                         <button
-                          :disabled="shopingCart.id === item.id"
+                          type="button"
+                          :disabled="shoppingCart.id === item.id"
                           @click="(item.qty -= 1), checkQty(item)"
                           class="btn btn-xs align-top"
                         >
@@ -200,6 +206,7 @@
                           type="number"
                           class="input input-bordered input-primary w-14 h-6"
                         /><button
+                          type="button"
                           @click="(item.qty += 1), checkQty(item)"
                           class="btn btn-xs align-top"
                         >
@@ -215,13 +222,13 @@
             </div>
             <div class="divider"></div>
             <h3 class="text-end align-top text-xl">
-              NT${{ shopingCart.total }}
+              NT${{ shoppingCart.total }}
             </h3>
             <div class="card-actions">
               <router-link
                 :to="{ name: 'checkout' }"
                 class="btn btn-primary btn-block text-xl"
-                @click="showShopingCart = !showShopingCart"
+                @click="showShoppingCart = !showShoppingCart"
                 >前往結帳</router-link
               >
             </div>
@@ -261,16 +268,18 @@
       </svg></div
   ></transition>
 </template>
+
 <script setup>
 import { onMounted, ref } from 'vue';
-import { useUserProductsStores } from '../stores/UserProductsStores';
 import { storeToRefs } from 'pinia';
-const userProductsStroes = useUserProductsStores();
-const { shopingCart, isLoading } = storeToRefs(userProductsStroes);
-const { getShopingCart, deleteCart, checkQty } = userProductsStroes;
-getShopingCart();
+import { useUserProductsStores } from '@/stores/UserProductsStores';
 
-//顯示toTop圖標
+const userProductsStores = useUserProductsStores();
+const { shoppingCart, isLoading } = storeToRefs(userProductsStores);
+const { getShoppingCart, deleteCart, checkQty } = userProductsStores;
+getShoppingCart();
+
+// 顯示toTop圖標
 const toTopRef = ref(null);
 onMounted(() => {
   const toTop = toTopRef.value;
@@ -283,20 +292,20 @@ onMounted(() => {
     }
   });
 });
-//到頁面最上層點擊事件
+// 到頁面最上層點擊事件
 const toTop = () => {
   window.scrollTo({
     top: 0,
     behavior: 'smooth',
   });
 };
-//漢堡點擊效果
+// 漢堡點擊效果
 const showDropdown = ref(false);
 const toggleDropdown = () => {
   showDropdown.value = !showDropdown.value;
 };
 
-//navbar效果
+// navbar效果
 const navbarRef = ref(null);
 onMounted(() => {
   const navbar = navbarRef.value;
@@ -309,7 +318,7 @@ onMounted(() => {
     }
   });
 });
-const showShopingCart = ref(false);
+const showShoppingCart = ref(false);
 </script>
 
 <style>

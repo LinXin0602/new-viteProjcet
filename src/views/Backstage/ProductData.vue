@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <loading-overlay :active="isLoading">
     <div class="loadingio-spinner-ball-l30nz6iyhu9">
       <div class="ldio-hnk0xi4nyc8">
@@ -65,14 +65,14 @@ import DataPage from '@/components/DataPage.vue';
 import ProductModal from '@/components/ProductModal.vue';
 //從pinia取得product資料
 import { storeToRefs } from 'pinia';
-import { useProductsStroes } from '@/stores/ProductsStores.js';
-const productsStroe = useProductsStroes();
-const { products, tempProduct, isLoading, isAdd } = storeToRefs(productsStroe);
-const { getProduct } = productsStroe;
+import { useProductsStores } from '@/stores/ProductsStores.js';
+const productsStores = useProductsStores();
+const { products, tempProduct, isLoading, isAdd } = storeToRefs(productsStores);
+const { getProduct } = productsStores;
 getProduct();
 const getItem = (item) => {
   tempProduct.value = { ...item };
 };
 </script>
 
-<style lang=""></style>
+<style></style>

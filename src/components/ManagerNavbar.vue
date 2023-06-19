@@ -1,11 +1,11 @@
-<template lang="">
+<template>
   <div class="w-full top-0 z-50 h-16 navbar bg-gray-200 rounded-b-xl shadow-xl">
     <div class="flex-1 mx-5">
       <router-link :to="{ name: 'productdata' }">
         <img
           class="h-12"
-          src="../assets/thisballLogo_preview_rev_1.png"
-          alt=""
+          src="@/assets/thisballLogo_preview_rev_1.png"
+          alt="Logo"
         />
       </router-link>
     </div>
@@ -41,6 +41,7 @@
     </div>
   </div>
 </template>
+
 <script setup>
 import axios from 'axios';
 import { useRouter } from 'vue-router';
@@ -55,4 +56,4 @@ const logout = () => {
 };
 </script>
 
-<style lang=""></style>
+<style></style>

@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <loading-overlay :active="isLoading">
     <div class="loadingio-spinner-ball-l30nz6iyhu9">
       <div class="ldio-hnk0xi4nyc8">
@@ -73,10 +73,11 @@
   <OrderModal />
   <DeleteModal />
 </template>
+
 <script setup>
 import { changeDate } from '@/composables/useDateChange.js';
 import OrderModal from '@/components/OrderModal.vue';
-import DeleteModal from '../../components/DeleteModal.vue';
+import DeleteModal from '@/components/DeleteModal.vue';
 import { useOrderStores } from '@/stores/OrderStores.js';
 import { storeToRefs } from 'pinia';
 const { TimeDate } = changeDate();
@@ -85,4 +86,5 @@ const { getOrder, getItem } = orderStores;
 const { orders, isLoading } = storeToRefs(orderStores);
 getOrder();
 </script>
-<style lang=""></style>
+
+<style></style>

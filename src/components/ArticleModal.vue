@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <input type="checkbox" id="articleModal" class="modal-toggle" />
   <div class="modal">
     <div class="modal-box w-11/12 max-w-5xl">
@@ -90,7 +90,6 @@
           ></textarea>
         </div>
       </div>
-
       <div class="modal-action">
         <label
           for="articleModal"
@@ -125,7 +124,7 @@ import axios from 'axios';
 import { changeDate } from '../composables/useDateChange';
 import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
-import { useArticleStores } from '../stores/ArticleStores.js';
+import { useArticleStores } from '@/stores/ArticleStores.js';
 const { DayDate } = changeDate();
 const ArticleStores = useArticleStores();
 const { tempArticle, isAdd } = storeToRefs(ArticleStores);
@@ -133,7 +132,6 @@ const { addArticle } = ArticleStores;
 const fileInput = ref(null);
 //上傳圖片並轉API為網址
 const uploadFile = () => {
-  console.log(fileInput.value.files[0]);
   const uploadFile = fileInput.value.files[0];
   const formData = new FormData();
   formData.append('ile-to-upload', uploadFile);
@@ -141,11 +139,11 @@ const uploadFile = () => {
     import.meta.env.VITE_PATH
   }/admin/upload`;
   axios.post(api, formData).then((res) => {
-    console.log(res);
     if (res.data.success) {
       tempArticle.value.image = res.data.imageUrl;
     }
   });
 };
 </script>
-<style lang=""></style>
+
+<style></style>

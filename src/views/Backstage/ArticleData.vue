@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <div class="h-20 flex justify-end items-center mx-6">
     <label for="articleModal" @click="isAdd = true" class="btn">新增文章</label>
   </div>
@@ -19,7 +19,7 @@
           <td>{{ TimeDate(item.create_at) }}</td>
           <td class="truncate max-w-xs">{{ item.title }}</td>
           <td>
-            <img class="w-28" :src="item.image" alt="" />
+            <img class="w-28" :src="item.image" :alt="item.title" />
           </td>
           <td>{{ item.author }}</td>
           <td>
@@ -49,16 +49,18 @@
   <ArticleModal />
   <DeleteModal />
 </template>
+
 <script setup>
-import { changeDate } from '../../composables/useDateChange';
+import { changeDate } from '@/composables/useDateChange';
 import { storeToRefs } from 'pinia';
-import ArticleModal from '../../components/ArticleModal.vue';
-import { useArticleStores } from '../../stores/ArticleStores';
-import DeleteModal from '../../components/DeleteModal.vue';
+import ArticleModal from '@/components/ArticleModal.vue';
+import { useArticleStores } from '@/stores/ArticleStores';
+import DeleteModal from '@/components/DeleteModal.vue';
 const { TimeDate } = changeDate();
 const articleStores = useArticleStores();
 const { articleList, isAdd } = storeToRefs(articleStores);
 const { getArticleList, getItem } = articleStores;
 getArticleList();
 </script>
-<style lang=""></style>
+
+<style></style>

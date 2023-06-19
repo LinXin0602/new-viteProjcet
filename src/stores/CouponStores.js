@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
 import { ref } from 'vue';
-import { toastMessage } from '../composables/useToastMessage';
+import { toastMessage } from '@/composables/useToastMessage';
 export const useCouponStores = defineStore('CouponStores', () => {
   const coupons = ref({}); //優惠券資料
   const pagination = ref({}); //頁數
@@ -20,7 +20,6 @@ export const useCouponStores = defineStore('CouponStores', () => {
       import.meta.env.VITE_PATH
     }/admin/coupons?page=${page}`;
     axios.get(api).then((res) => {
-      console.log(res);
       coupons.value = res.data.coupons;
       pagination.value = res.data.pagination;
       isLoading.value = false;

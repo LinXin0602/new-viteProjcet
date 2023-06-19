@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <div>
     <input type="checkbox" id="CouponModal" class="modal-toggle" />
     <div class="modal">
@@ -63,7 +63,6 @@
             </div>
           </div>
         </div>
-
         <div class="m-2">
           <input
             v-model="tempCoupon.is_enabled"
@@ -75,7 +74,6 @@
           />
           <label for="is_enabled" class="text-xl"> 是否啟用 </label>
         </div>
-
         <div class="modal-action">
           <label @click="updateCoupon" for="CouponModal" class="btn"
             >確定</label
@@ -88,10 +86,11 @@
     </div>
   </div>
 </template>
+
 <script setup>
 import { watch } from 'vue';
 import { storeToRefs } from 'pinia';
-import { useCouponStores } from '../stores/CouponStores.js';
+import { useCouponStores } from '@/stores/CouponStores.js';
 
 const couponStores = useCouponStores();
 const { updateCoupon } = couponStores;
@@ -102,4 +101,5 @@ watch(due_date, (newData) => {
   tempCoupon.value.due_date = Math.floor(new Date(newData) / 1000);
 });
 </script>
-<style lang=""></style>
+
+<style></style>

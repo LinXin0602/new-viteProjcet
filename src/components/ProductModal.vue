@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <div>
     <!-- Put this part before </body> tag -->
     <input type="checkbox" id="my-modal" class="modal-toggle" />
@@ -150,12 +150,13 @@
     </div>
   </div>
 </template>
+
 <script setup>
 import { storeToRefs } from 'pinia';
-import { useProductsStroes } from '@/stores/ProductsStores.js';
+import { useProductsStores } from '@/stores/ProductsStores.js';
 import { ref } from 'vue';
 import axios from 'axios';
-const productsStroe = useProductsStroes();
+const productsStroe = useProductsStores();
 const { tempProduct, isAdd } = storeToRefs(productsStroe);
 const { updateItem } = productsStroe;
 
@@ -175,4 +176,5 @@ const uploadFile = () => {
   });
 };
 </script>
-<style lang=""></style>
+
+<style></style>

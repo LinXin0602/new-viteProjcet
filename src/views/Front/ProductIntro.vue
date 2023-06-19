@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <loading-overlay :active="isLoading"></loading-overlay>
   <div
     class="container mx-auto my-20 w-4/5 flex flex-col lg:flex-row flex-wrap"
@@ -28,7 +28,7 @@
       <div class="flex justify-between">
         <form
           class="my-4"
-          @submit.prevent="addShopingCart(product, productQty)"
+          @submit.prevent="addShoppingCart(product, productQty)"
         >
           <input
             class="input input-sm input-bordered w-2/5 text-center"
@@ -37,15 +37,18 @@
             min="1"
           />
           <button
+            type="button"
             v-if="status.loadingItem === product.id"
             :disabled="status.loadingItem === product.id"
             class="btn btn-sm mx-0.5 align-top loading"
           >
             加入購物車
           </button>
-          <button v-else class="btn btn-sm mx-0.5 align-top">加入購物車</button>
+          <button type="button" v-else class="btn btn-sm mx-0.5 align-top">
+            加入購物車
+          </button>
         </form>
-        <button>
+        <button type="button">
           <font-awesome-icon
             v-if="favoriteItems.includes(product.id)"
             @click="addFavorite(product)"
@@ -64,12 +67,13 @@
 
   <ProductsRecommended />
 </template>
+
 <script setup>
 import ProductsRecommended from '@/components/ProductsRecommended.vue';
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useUserProductsStores } from '../../stores/UserProductsStores';
+import { useUserProductsStores } from '@/stores/UserProductsStores';
 import { useMyFavoriteStores } from '@/stores/MyFavoriteStores';
 //我的最愛
 const myFavoriteStores = useMyFavoriteStores();
@@ -77,9 +81,9 @@ const { addFavorite, getLocalStorage } = myFavoriteStores;
 const { favoriteItems } = storeToRefs(myFavoriteStores);
 favoriteItems.value = getLocalStorage() || [];
 //獲得product資料
-const userProductsStroes = useUserProductsStores();
-const { getProduct, addShopingCart } = userProductsStroes;
-const { product, isLoading, status } = storeToRefs(userProductsStroes);
+const userProductsStores = useUserProductsStores();
+const { getProduct, addShoppingCart } = userProductsStores;
+const { product, isLoading, status } = storeToRefs(userProductsStores);
 
 const route = useRoute();
 const router = useRouter();
@@ -91,4 +95,5 @@ getProduct(productId);
 
 const productQty = ref(1);
 </script>
-<style lang=""></style>
+
+<style></style>

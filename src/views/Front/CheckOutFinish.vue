@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <div class="lg:h-52 mt-20 h-24 md:h-36 flex justify-center items-center">
     <ul class="steps">
       <li class="step">填寫訂單</li>
@@ -9,13 +9,13 @@
   <div class="divider"></div>
   <div class="">
     <h2 class="text-3xl my-10 text-center">感謝您的購買</h2>
-
     <ul class="text-2xl text-center">
       <li>結帳結束後現場會立即製作訂單，請您留意手機</li>
       <li>本訂單會現場製作，若有任何問題歡迎來電詢問</li>
       <li>訂單完成時將會與您聯絡，屆時請保持手機暢通</li>
       <li>歡迎到本店內用，若有空閒時間可以坐來下慢慢享用</li>
       <button
+        type="button"
         class="text-gray-500 text-xl bg-gray-200 p-3 rounded-md hover:shadow-md mt-5"
       >
         <router-link :to="{ name: 'homeview' }">回到首頁</router-link>
@@ -32,7 +32,6 @@
           referrerpolicy="no-referrer-when-downgrade"
           class="w-full lg:basis-1/3 flex-grow lg:mr-10"
         ></iframe>
-
         <table
           class="table table-compact sm:table md:p-4 w-full lg:basis-1/3 flex-grow mt-6 lg:mt-0"
         >
@@ -63,5 +62,7 @@
     </div>
   </div>
 </template>
+
 <script setup></script>
-<style lang=""></style>
+
+<style></style>

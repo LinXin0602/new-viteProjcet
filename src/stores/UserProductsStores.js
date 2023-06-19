@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import { toastMessage } from '../composables/useToastMessage.js';
+import { toastMessage } from '@/composables/useToastMessage.js';
 
 import { useRouter } from 'vue-router';
 export const useUserProductsStores = defineStore('userProductsStores', () => {
@@ -56,7 +56,7 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
     });
   };
   //加入購物車
-  const addShopingCart = (item, qty = 1) => {
+  const addShoppingCart = (item, qty = 1) => {
     status.value.loadingItem = item.id;
     const api = `${import.meta.env.VITE_API}api/${
       import.meta.env.VITE_PATH
@@ -64,17 +64,17 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
     axios.post(api, { data: { product_id: item.id, qty: qty } }).then((res) => {
       toastMessage(res, `【${item.title}】`, '成功加入購物車');
       status.value.loadingItem = '';
-      getShopingCart();
+      getShoppingCart();
     });
   };
   //獲得購物車資訊
-  const shopingCart = ref({});
-  const getShopingCart = () => {
+  const shoppingCart = ref({});
+  const getShoppingCart = () => {
     const api = `${import.meta.env.VITE_API}api/${
       import.meta.env.VITE_PATH
     }/cart`;
     axios.get(api).then((res) => {
-      shopingCart.value = res.data.data;
+      shoppingCart.value = res.data.data;
     });
   };
   //刪除購物車內容
@@ -85,7 +85,7 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
     }/cart/${id}`;
     axios.delete(api).then(() => {
       isLoading.value = false;
-      getShopingCart();
+      getShoppingCart();
     });
   };
   //變更商品數量
@@ -99,7 +99,7 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
         .put(api, { data: { product_id: item.id, qty: item.qty } })
         .then(() => {
           isLoading.value = false;
-          getShopingCart();
+          getShoppingCart();
         });
     } else {
       item.qty = 1;
@@ -107,7 +107,7 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
         .put(api, { data: { product_id: item.id, qty: item.qty } })
         .then(() => {
           isLoading.value = false;
-          getShopingCart();
+          getShoppingCart();
         });
 
       return;
@@ -121,7 +121,7 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
     axios.post(api, { data: { code: couponCode.value } }).then((res) => {
       const msg = res.data.message.replace(':', ' ');
       toastMessage(res, ` ${msg}`, '');
-      shopingCart.value.final_total = res.data.data.final_total;
+      shoppingCart.value.final_total = res.data.data.final_total;
       couponCode.value = '';
     });
   };
@@ -136,7 +136,7 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
       if (res.data.success) {
         router.push({ name: 'checkandpaying', params: { id: orderid } });
         order.value = {};
-        shopingCart.value = { length: 0 };
+        shoppingCart.value = { length: 0 };
       } else {
         toastMessage(res, ` ${res.data.message}`, '');
       }
@@ -169,10 +169,10 @@ export const useUserProductsStores = defineStore('userProductsStores', () => {
     getProducts,
     product,
     getProduct,
-    shopingCart,
-    addShopingCart,
+    shoppingCart,
+    addShoppingCart,
     status,
-    getShopingCart,
+    getShoppingCart,
     isLoading,
     deleteCart,
     checkQty,

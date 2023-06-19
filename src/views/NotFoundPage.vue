@@ -1,22 +1,3 @@
-<!-- component -->
-<style scoped>
-.emoji-404 {
-  position: relative;
-  animation: mymove 2.5s infinite;
-}
-
-@keyframes mymove {
-  33% {
-    top: 0px;
-  }
-  66% {
-    top: 20px;
-  }
-  100% {
-    top: 0px;
-  }
-}
-</style>
 <template>
   <div class="bg-gray-100 py-10 h-screen justify-center">
     <center class="mt-10 m-auto">
@@ -126,3 +107,22 @@
     </center>
   </div>
 </template>
+
+<style scoped>
+.emoji-404 {
+  position: relative;
+  animation: mymove 2.5s infinite;
+}
+
+@keyframes mymove {
+  33% {
+    top: 0px;
+  }
+  66% {
+    top: 20px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+</style>

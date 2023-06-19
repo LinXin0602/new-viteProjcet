@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <div class="h-48 font-semibold flex justify-center items-center text-3xl">
     <h2>我們的那些</h2>
   </div>
@@ -12,8 +12,8 @@
     <div class="col-span-2 p-3">
       <img
         class="object-cover max-w-full border border-transparent rounded"
-        src="../../assets/img/外送.png"
-        alt=""
+        src="@/assets/img/外送.png"
+        alt="外送"
       />
     </div>
     <div class="col-span-3 p-3 text-center">
@@ -40,8 +40,8 @@
     <div class="col-span-2 col-start-4 p-3">
       <img
         class="object-cover max-w-full w-full border border-transparent rounded"
-        src="../../assets/img/戶外餐車.jpg"
-        alt=""
+        src="@/assets/img/戶外餐車.jpg"
+        alt="戶外餐車"
       />
     </div>
   </div>
@@ -54,8 +54,8 @@
     <div class="col-span-2 p-3">
       <img
         class="object-cover max-w-full w-full border border-transparent rounded"
-        src="../../assets/img/食物.jpg"
-        alt=""
+        src="@/assets/img/食物.jpg"
+        alt="食物"
       />
     </div>
     <div class="col-span-3 p-3 text-center">
@@ -86,11 +86,13 @@
     <div class="col-span-2 col-start-4 p-3">
       <img
         class="bg-cover border border-transparent rounded"
-        src="../../assets/img/店面照.jpg"
-        alt=""
+        src="@/assets/img/店面照.jpg"
+        alt="店面照"
       />
     </div>
   </div>
 </template>
+
 <script setup></script>
+
 <style scoped></style>

@@ -14,7 +14,6 @@ export const useOrderStores = defineStore('OrderStores', () => {
       import.meta.env.VITE_PATH
     }/admin/orders?page=${page}`;
     axios.get(api).then((res) => {
-      console.log(res);
       isLoading.value = false;
       orders.value = res.data.orders;
       pagination.value = res.data.pagination;
@@ -26,7 +25,6 @@ export const useOrderStores = defineStore('OrderStores', () => {
       import.meta.env.VITE_PATH
     }/admin/order/${tempOrder.value.id}`;
     axios.delete(api).then((res) => {
-      console.log(res);
       if (res.data.success) {
         getOrder();
       }

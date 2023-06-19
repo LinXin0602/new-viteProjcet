@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import axios from 'axios';
-import { toastMessage } from '../composables/useToastMessage';
+import { toastMessage } from '@/composables/useToastMessage';
 export const useArticleStores = defineStore('ArticleStores', () => {
   const article = ref({
     title: '',

@@ -43,7 +43,7 @@
           type="text"
           placeholder="輸入商品名稱"
         />
-        <button>
+        <button type="button">
           <font-awesome-icon
             class="text-xl"
             :icon="['fas', 'magnifying-glass']"
@@ -76,7 +76,7 @@
             <p class="my-1 text-lg font-medium text-gray-900 mx-2">
               NT${{ item.price }}
             </p>
-            <button>
+            <button type="button">
               <font-awesome-icon
                 v-if="favoriteItems.includes(item.id)"
                 @click.stop="addFavorite(item)"
@@ -92,17 +92,17 @@
           </div>
 
           <div class="mt-3">
-            <button
+            <button type="button"
               v-if="status.loadingItem === item.id"
               :disabled="status.loadingItem === item.id"
               class="btn w-full loading"
             >
               加入購物車
             </button>
-            <button
+            <button type="button"
               v-else
               class="btn w-full"
-              @click.stop="addShopingCart(item)"
+              @click.stop="addShoppingCart(item)"
             >
               加入購物車
             </button>
@@ -116,27 +116,29 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { storeToRefs } from 'pinia';
-import { useUserProductsStores } from '../../stores/UserProductsStores.js';
-import { useMyFavoriteStores } from '@/stores/MyFavoriteStores';
 import { useRouter } from 'vue-router';
-const userProductsStroes = useUserProductsStores();
-const { getProducts, addShopingCart, getShopingCart } = userProductsStroes;
-const { status, isLoading, product, filteredProducts, productStyle } =
-  storeToRefs(userProductsStroes);
+import { useUserProductsStores } from '@/stores/UserProductsStores.js';
+import { useMyFavoriteStores } from '@/stores/MyFavoriteStores';
+
+const userProductsStores = useUserProductsStores();
+const { getProducts, addShoppingCart, getShoppingCart } = userProductsStores;
+const {
+  status, isLoading, product, filteredProducts, productStyle,
+} = storeToRefs(userProductsStores);
 
 const router = useRouter();
 getProducts();
-getShopingCart();
+getShoppingCart();
 const goProduct = (id) => {
   product.value = {};
-  router.push({ name: 'productintro', params: { id: id } });
+  router.push({ name: 'productintro', params: { id } });
 };
-//搜尋商品
+// 搜尋商品
 const searchProduct = ref('');
 const searchItem = () => {
-  filteredProducts.value = filteredProducts.value.filter((item) => {
-    return item.title.indexOf(searchProduct.value) !== -1;
-  });
+  filteredProducts.value = filteredProducts.value.filter(
+    (item) => item.title.indexOf(searchProduct.value) !== -1,
+  );
 };
 watch(searchProduct, (newValue) => {
   if (newValue === '') {
